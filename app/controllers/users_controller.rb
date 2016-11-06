@@ -5,7 +5,6 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    # user = User.find_by(name: session[:user_id])
     @users = User.all
   end
 
@@ -71,6 +70,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:name, :admin, :password)
+      params.require(:user).permit(:name, :admin, :pw)
     end
 end
