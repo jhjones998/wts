@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Wtd:</strong>
+  <%= @master_tech.wtd_id %>
+</p>
+
+<p>
+  <strong>Level:</strong>
+  <%= @master_tech.level %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @master_tech.name %>
+</p>
+
+<p>
+  <strong>Desc:</strong>
+  <%= @master_tech.desc %>
+</p>
+
+<p>
+  <strong>Unresearched descr:</strong>
+  <%= @master_tech.unresearched_descr %>
+</p>
+
+<p>
+  <strong>Initially visible:</strong>
+  <%= @master_tech.initially_visible %>
+</p>
+
+<%= link_to 'Edit', edit_master_tech_path(@master_tech) %> |
+<%= link_to 'Back', master_teches_path %>

@@ -1,0 +1,47 @@
+<%= form_for(master_tech) do |f| %>
+  <% if master_tech.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(master_tech.errors.count, "error") %> prohibited this master_tech from being saved:</h2>
+
+      <ul>
+      <% master_tech.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :wtd_id %>
+    <%= f.text_field :wtd_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :level %>
+    <%= f.number_field :level %>
+  </div>
+
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :desc %>
+    <%= f.text_field :desc %>
+  </div>
+
+  <div class="field">
+    <%= f.label :unresearched_descr %>
+    <%= f.text_field :unresearched_descr %>
+  </div>
+
+  <div class="field">
+    <%= f.label :initially_visible %>
+    <%= f.check_box :initially_visible %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  wtd_id: MyString
+  level: 1
+  name: MyString
+  desc: MyString
+  unresearched_descr: MyString
+  initially_visible: false
+
+two:
+  wtd_id: MyString
+  level: 1
+  name: MyString
+  desc: MyString
+  unresearched_descr: MyString
+  initially_visible: false

@@ -1,0 +1,2 @@
+class MasterTech < ApplicationRecord
+end
