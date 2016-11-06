@@ -4,6 +4,6 @@ module SessionsHelper
     session[:user] = user
   end
   def check_admin
-    session.key?(:user) && session[:user][:admin]
+    session.key?(:user) && session[:user]['admin']
   end
 end
