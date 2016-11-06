@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  country: MyString
+  artifacts: false
+
+two:
+  user: two
+  country: MyString
+  artifacts: false

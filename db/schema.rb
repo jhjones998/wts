@@ -10,10 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161106040641) do
+ActiveRecord::Schema.define(version: 20161106044917) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "accesses", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "country"
+    t.boolean  "artifacts"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_accesses_on_user_id", using: :btree
+  end
+
+  create_table "artifacts", force: :cascade do |t|
+    t.string   "country"
+    t.integer  "l1"
+    t.integer  "l2"
+    t.integer  "l3"
+    t.integer  "l4"
+    t.integer  "l5"
+    t.integer  "l6"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "master_teches", force: :cascade do |t|
     t.string   "wts_id"
@@ -39,6 +60,13 @@ ActiveRecord::Schema.define(version: 20161106040641) do
     t.index ["master_tech_id"], name: "index_tech_instances_on_master_tech_id", using: :btree
   end
 
+  create_table "tech_trees", force: :cascade do |t|
+    t.integer  "master_tech_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["master_tech_id"], name: "index_tech_trees_on_master_tech_id", using: :btree
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "name"
     t.boolean  "admin"
@@ -47,5 +75,7 @@ ActiveRecord::Schema.define(version: 20161106040641) do
     t.datetime "updated_at",      null: false
   end
 
+  add_foreign_key "accesses", "users"
   add_foreign_key "tech_instances", "master_teches"
+  add_foreign_key "tech_trees", "master_teches"
 end

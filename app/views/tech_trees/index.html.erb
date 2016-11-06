@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Tech Trees</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Master tech</th>
+      <th>Master tech</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tech_trees.each do |tech_tree| %>
+      <tr>
+        <td><%= tech_tree.master_tech %></td>
+        <td><%= tech_tree.master_tech %></td>
+        <td><%= link_to 'Show', tech_tree %></td>
+        <td><%= link_to 'Edit', edit_tech_tree_path(tech_tree) %></td>
+        <td><%= link_to 'Destroy', tech_tree, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Tech Tree', new_tech_tree_path %>

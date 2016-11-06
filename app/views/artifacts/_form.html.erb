@@ -1,0 +1,52 @@
+<%= form_for(artifact) do |f| %>
+  <% if artifact.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(artifact.errors.count, "error") %> prohibited this artifact from being saved:</h2>
+
+      <ul>
+      <% artifact.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :country %>
+    <%= f.text_field :country %>
+  </div>
+
+  <div class="field">
+    <%= f.label :l1 %>
+    <%= f.number_field :l1 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :l2 %>
+    <%= f.number_field :l2 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :l3 %>
+    <%= f.number_field :l3 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :l4 %>
+    <%= f.number_field :l4 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :l5 %>
+    <%= f.number_field :l5 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :l6 %>
+    <%= f.number_field :l6 %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

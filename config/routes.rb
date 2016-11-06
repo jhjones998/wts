@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :countries
+  resources :artifacts
+  resources :accesses
+  resources :tech_trees
   resources :tech_instances
   resources :master_teches
   resources :users

@@ -1,0 +1,1 @@
+json.partial! "tech_trees/tech_tree", tech_tree: @tech_tree

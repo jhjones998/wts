@@ -1,0 +1,1 @@
+json.array! @tech_trees, partial: 'tech_trees/tech_tree', as: :tech_tree
