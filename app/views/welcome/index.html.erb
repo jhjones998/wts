@@ -2,13 +2,55 @@
 
 <h1>User Home</h1>
 
-<ul class="list-group">
-  <% @teches.each do |master_tech| %>
-    <li class="list-group-item">
-      <h5 class="list-group-item-heading"><%= master_tech.name %></h5>
-      <p class="list-group-item-text">Level: <%= master_tech.level %></p>
-      <p class="list-group-item-text">ID: <%= master_tech.wts_id %></p>
-      <p class="list-group-item-text"><%= master_tech.desc %></p>
-    </li>
+<div class="row">
+  <% @teches.each do |t| %>
+    <div class="col-xs-6 col-md-4">
+      <h5 class="list-group-item-heading"><%= t.name %></h5>
+      <p class="list-group-item-text">Level: <%= t.level %></p>
+      <p class="list-group-item-text">ID: <%= t.wts_id %></p>
+      <p class="list-group-item-text"><%= t.desc %></p>
+    </div>
   <% end %>
-</ul>
+</div>
+<br />
+<div class="row">
+  <% @teches.each do |t| %>
+      <div class="col-xs-6 col-md-4">
+        <h5 class="list-group-item-heading"><%= t.name %></h5>
+        <p class="list-group-item-text">Level: <%= t.level %></p>
+        <p class="list-group-item-text">ID: <%= t.wts_id %></p>
+        <p class="list-group-item-text"><%= t.desc %></p>
+      </div>
+  <% end %>
+</div>
+<br />
+<div class="row">
+  <div class="col-md-2">
+    <p class="list-group-item-text">6 Level 1's</p>
+    <p class="list-group-item-text"><a href="#" class="small">Combine</a></p>
+  </div>
+  <div class="col-md-2">
+    <p class="list-group-item-text">3 Level 2's</p>
+    <p class="list-group-item-text"><a href="#" class="small">Split</a></p>
+    <p class="list-group-item-text"><a href="#" class="small">Combine</a></p>
+  </div>
+  <div class="col-md-2">
+    <p class="list-group-item-text">0 Level 3's</p>
+    <p class="list-group-item-text"><a href="#" class="small">Split</a></p>
+    <p class="list-group-item-text"><a href="#" class="small">Combine</a></p>
+  </div>
+  <div class="col-md-2">
+    <p class="list-group-item-text">8 Level 4's</p>
+    <p class="list-group-item-text"><a href="#" class="small">Split</a></p>
+    <p class="list-group-item-text"><a href="#" class="small">Combine</a></p>
+  </div>
+  <div class="col-md-2">
+    <p class="list-group-item-text">1 Level 5's</p>
+    <p class="list-group-item-text"><a href="#" class="small">Split</a></p>
+    <p class="list-group-item-text"><a href="#" class="small">Combine</a></p>
+  </div>
+  <div class="col-md-2">
+    <p class="list-group-item-text">1 Level 6's</p>
+    <p class="list-group-item-text"><a href="#" class="small">Split</a></p>
+  </div>
+</div>
