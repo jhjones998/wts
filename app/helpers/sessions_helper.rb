@@ -5,7 +5,6 @@ module SessionsHelper
   end
 
   def check_admin
-    User.find(session[:user_id]).admin
+    User.find_by(name: session[:user_id]).admin
   end
-
 end
