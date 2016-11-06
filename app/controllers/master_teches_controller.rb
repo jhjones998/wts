@@ -69,6 +69,6 @@ class MasterTechesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def master_tech_params
-      params.require(:master_tech).permit(:wts_id, :level, :name, :desc, :unresearched_descr, :initially_visible)
+      params.require(:master_tech).permit(:wts_id, :level, :name, :desc, :unresearched_desc, :initially_visible)
     end
 end

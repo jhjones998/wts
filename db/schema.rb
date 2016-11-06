@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 20161106003421) do
     t.integer  "level"
     t.string   "name"
     t.string   "desc"
-    t.string   "unresearched_descr"
+    t.string   "unresearched_desc"
     t.boolean  "initially_visible"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
