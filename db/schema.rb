@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161106000540) do
+ActiveRecord::Schema.define(version: 20161106003421) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "master_teches", force: :cascade do |t|
-    t.string   "wtd_id"
+    t.string   "wts_id"
     t.integer  "level"
     t.string   "name"
     t.string   "desc"
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 20161106000540) do
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
     t.index ["name"], name: "index_master_teches_on_name", unique: true, using: :btree
-    t.index ["wtd_id"], name: "index_master_teches_on_wtd_id", unique: true, using: :btree
+    t.index ["wts_id"], name: "index_master_teches_on_wts_id", unique: true, using: :btree
   end
 
   create_table "users", force: :cascade do |t|

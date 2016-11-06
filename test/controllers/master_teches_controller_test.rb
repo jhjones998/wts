@@ -17,7 +17,7 @@ class MasterTechesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create master_tech" do
     assert_difference('MasterTech.count') do
-      post master_teches_url, params: { master_tech: { desc: @master_tech.desc, initially_visible: @master_tech.initially_visible, level: @master_tech.level, name: @master_tech.name, unresearched_descr: @master_tech.unresearched_descr, wtd_id: @master_tech.wtd_id } }
+      post master_teches_url, params: { master_tech: { desc: @master_tech.desc, initially_visible: @master_tech.initially_visible, level: @master_tech.level, name: @master_tech.name, unresearched_descr: @master_tech.unresearched_descr, wts_id: @master_tech.wts_id } }
     end
 
     assert_redirected_to master_tech_url(MasterTech.last)
@@ -34,7 +34,7 @@ class MasterTechesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update master_tech" do
-    patch master_tech_url(@master_tech), params: { master_tech: { desc: @master_tech.desc, initially_visible: @master_tech.initially_visible, level: @master_tech.level, name: @master_tech.name, unresearched_descr: @master_tech.unresearched_descr, wtd_id: @master_tech.wtd_id } }
+    patch master_tech_url(@master_tech), params: { master_tech: { desc: @master_tech.desc, initially_visible: @master_tech.initially_visible, level: @master_tech.level, name: @master_tech.name, unresearched_descr: @master_tech.unresearched_descr, wts_id: @master_tech.wts_id } }
     assert_redirected_to master_tech_url(@master_tech)
   end
 
