@@ -2,34 +2,40 @@
 
 <h1>User Home</h1>
 
-<table class="table">
-  <thead>
-  <tr>
-    <th>Wtd</th>
-    <th>Level</th>
-    <th>Name</th>
-    <th>Desc</th>
-    <th>Unresearched desc</th>
-    <th>Initially visible</th>
-    <th colspan="3"></th>
-  </tr>
-  </thead>
+<!--<table class="table table-striped">-->
+  <!--<thead>-->
+  <!--<tr>-->
+    <!--<th>Wtd</th>-->
+    <!--<th>Level</th>-->
+    <!--<th>Name</th>-->
+    <!--<th>Desc</th>-->
+    <!--<th>Unresearched desc</th>-->
+    <!--<th>Initially visible</th>-->
+    <!--<th colspan="3"></th>-->
+  <!--</tr>-->
+  <!--</thead>-->
 
-  <tbody>
+  <!--<tbody>-->
+  <!--<% @teches.each do |master_tech| %>-->
+      <!--<tr>-->
+        <!--<td><%= master_tech.wts_id %></td>-->
+        <!--<td><%= master_tech.level %></td>-->
+        <!--<td><%= master_tech.name %></td>-->
+        <!--<td><%= master_tech.desc %></td>-->
+        <!--<td><%= master_tech.unresearched_desc %></td>-->
+        <!--<td><%= master_tech.initially_visible %></td>-->
+      <!--</tr>-->
+  <!--<% end %>-->
+  <!--</tbody>-->
+<!--</table>-->
+
+<ul class="list-group">
   <% @teches.each do |master_tech| %>
-      <tr>
-        <td><%= master_tech.wts_id %></td>
-        <td><%= master_tech.level %></td>
-        <td><%= master_tech.name %></td>
-        <td><%= master_tech.desc %></td>
-        <td><%= master_tech.unresearched_desc %></td>
-        <td><%= master_tech.initially_visible %></td>
-        <td><%= link_to 'Show', master_tech %></td>
-        <td><%= link_to 'Edit', edit_master_tech_path(master_tech) %></td>
-        <td><%= link_to 'Destroy', master_tech, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+    <li class="list-group-item">
+      <h5 class="list-group-item-heading"><%= master_tech.name %></h5>
+      <p class="list-group-item-text">Level: <%= master_tech.level %></p>
+      <p class="list-group-item-text">ID: <%= master_tech.wts_id %></p>
+      <p class="list-group-item-text"><%= master_tech.desc %></p>
+    </li>
   <% end %>
-  </tbody>
-</table>
-
-<br>
+</ul>
