@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  country: MyString
+  master_tech: one
+  visible: false
+  researching: false
+  partial_credit: 1
+
+two:
+  country: MyString
+  master_tech: two
+  visible: false
+  researching: false
+  partial_credit: 1

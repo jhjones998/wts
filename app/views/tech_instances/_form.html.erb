@@ -1,0 +1,42 @@
+<%= form_for(tech_instance) do |f| %>
+  <% if tech_instance.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(tech_instance.errors.count, "error") %> prohibited this tech_instance from being saved:</h2>
+
+      <ul>
+      <% tech_instance.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :country %>
+    <%= f.text_field :country %>
+  </div>
+
+  <div class="field">
+    <%= f.label :master_tech_id %>
+    <%= f.text_field :master_tech_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :visible %>
+    <%= f.check_box :visible %>
+  </div>
+
+  <div class="field">
+    <%= f.label :researching %>
+    <%= f.check_box :researching %>
+  </div>
+
+  <div class="field">
+    <%= f.label :partial_credit %>
+    <%= f.number_field :partial_credit %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

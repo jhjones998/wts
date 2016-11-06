@@ -1,0 +1,1 @@
+json.array! @tech_instances, partial: 'tech_instances/tech_instance', as: :tech_instance

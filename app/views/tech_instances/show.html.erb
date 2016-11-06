@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Country:</strong>
+  <%= @tech_instance.country %>
+</p>
+
+<p>
+  <strong>Master tech:</strong>
+  <%= @tech_instance.master_tech %>
+</p>
+
+<p>
+  <strong>Visible:</strong>
+  <%= @tech_instance.visible %>
+</p>
+
+<p>
+  <strong>Researching:</strong>
+  <%= @tech_instance.researching %>
+</p>
+
+<p>
+  <strong>Partial credit:</strong>
+  <%= @tech_instance.partial_credit %>
+</p>
+
+<%= link_to 'Edit', edit_tech_instance_path(@tech_instance) %> |
+<%= link_to 'Back', tech_instances_path %>

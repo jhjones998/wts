@@ -1,0 +1,1 @@
+json.partial! "tech_instances/tech_instance", tech_instance: @tech_instance
