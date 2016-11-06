@@ -1,10 +1,10 @@
 module SessionsHelper
   # Logs in the given user.
   def log_in(user)
-    session[:user_id] = user.name
+    session[:user_id] = user.id
   end
 
   def check_admin
-    User.find_by(name: session[:user_id]).admin
+    User.find(session[:user_id]).admin
   end
 end
