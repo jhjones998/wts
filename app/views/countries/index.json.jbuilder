@@ -1,1 +1,1 @@
-json.array! @countries, partial: 'countries/country', as: :country
+json.array! @countries, partial: 'countries/country', as: :country_id

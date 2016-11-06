@@ -69,6 +69,6 @@ class ArtifactsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def artifact_params
-      params.require(:artifact).permit(:country, :l1, :l2, :l3, :l4, :l5, :l6)
+      params.require(:artifact).permit(:country_id, :l1, :l2, :l3, :l4, :l5, :l6)
     end
 end

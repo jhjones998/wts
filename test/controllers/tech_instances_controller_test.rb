@@ -17,7 +17,7 @@ class TechInstancesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create tech_instance" do
     assert_difference('TechInstance.count') do
-      post tech_instances_url, params: { tech_instance: { country: @tech_instance.country, master_tech_id: @tech_instance.master_tech_id, partial_credit: @tech_instance.partial_credit, researching: @tech_instance.researching, visible: @tech_instance.visible } }
+      post tech_instances_url, params: { tech_instance: {country_id: @tech_instance.country, master_tech_id: @tech_instance.master_tech_id, partial_credit: @tech_instance.partial_credit, researching: @tech_instance.researching, visible: @tech_instance.visible } }
     end
 
     assert_redirected_to tech_instance_url(TechInstance.last)
@@ -34,7 +34,7 @@ class TechInstancesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update tech_instance" do
-    patch tech_instance_url(@tech_instance), params: { tech_instance: { country: @tech_instance.country, master_tech_id: @tech_instance.master_tech_id, partial_credit: @tech_instance.partial_credit, researching: @tech_instance.researching, visible: @tech_instance.visible } }
+    patch tech_instance_url(@tech_instance), params: { tech_instance: {country_id: @tech_instance.country, master_tech_id: @tech_instance.master_tech_id, partial_credit: @tech_instance.partial_credit, researching: @tech_instance.researching, visible: @tech_instance.visible } }
     assert_redirected_to tech_instance_url(@tech_instance)
   end
 

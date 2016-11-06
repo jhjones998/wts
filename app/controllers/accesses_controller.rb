@@ -69,6 +69,6 @@ class AccessesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def access_params
-      params.require(:access).permit(:user_id, :country, :artifacts)
+      params.require(:access).permit(:user_id, :country_id, :artifacts)
     end
 end

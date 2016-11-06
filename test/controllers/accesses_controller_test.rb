@@ -17,7 +17,7 @@ class AccessesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create access" do
     assert_difference('Access.count') do
-      post accesses_url, params: { access: { artifacts: @access.artifacts, country: @access.country, user_id: @access.user_id } }
+      post accesses_url, params: { access: {artifacts: @access.artifacts, country_id: @access.country, user_id: @access.user_id } }
     end
 
     assert_redirected_to access_url(Access.last)
@@ -34,7 +34,7 @@ class AccessesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update access" do
-    patch access_url(@access), params: { access: { artifacts: @access.artifacts, country: @access.country, user_id: @access.user_id } }
+    patch access_url(@access), params: { access: {artifacts: @access.artifacts, country_id: @access.country, user_id: @access.user_id } }
     assert_redirected_to access_url(@access)
   end
 

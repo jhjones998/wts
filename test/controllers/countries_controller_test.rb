@@ -17,7 +17,7 @@ class CountriesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create country" do
     assert_difference('Country.count') do
-      post countries_url, params: { country: { name: @country.name, user_id: @country.user_id } }
+      post countries_url, params: {country_id: {name: @country.name, user_id: @country.user_id } }
     end
 
     assert_redirected_to country_url(Country.last)
@@ -34,7 +34,7 @@ class CountriesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update country" do
-    patch country_url(@country), params: { country: { name: @country.name, user_id: @country.user_id } }
+    patch country_url(@country), params: {country_id: {name: @country.name, user_id: @country.user_id } }
     assert_redirected_to country_url(@country)
   end
 

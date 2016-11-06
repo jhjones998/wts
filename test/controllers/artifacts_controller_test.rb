@@ -17,7 +17,7 @@ class ArtifactsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create artifact" do
     assert_difference('Artifact.count') do
-      post artifacts_url, params: { artifact: { country: @artifact.country, l1: @artifact.l1, l2: @artifact.l2, l3: @artifact.l3, l4: @artifact.l4, l5: @artifact.l5, l6: @artifact.l6 } }
+      post artifacts_url, params: { artifact: {country_id: @artifact.country, l1: @artifact.l1, l2: @artifact.l2, l3: @artifact.l3, l4: @artifact.l4, l5: @artifact.l5, l6: @artifact.l6 } }
     end
 
     assert_redirected_to artifact_url(Artifact.last)
@@ -34,7 +34,7 @@ class ArtifactsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update artifact" do
-    patch artifact_url(@artifact), params: { artifact: { country: @artifact.country, l1: @artifact.l1, l2: @artifact.l2, l3: @artifact.l3, l4: @artifact.l4, l5: @artifact.l5, l6: @artifact.l6 } }
+    patch artifact_url(@artifact), params: { artifact: {country_id: @artifact.country, l1: @artifact.l1, l2: @artifact.l2, l3: @artifact.l3, l4: @artifact.l4, l5: @artifact.l5, l6: @artifact.l6 } }
     assert_redirected_to artifact_url(@artifact)
   end
 

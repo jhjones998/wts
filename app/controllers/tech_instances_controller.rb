@@ -69,6 +69,6 @@ class TechInstancesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def tech_instance_params
-      params.require(:tech_instance).permit(:country, :master_tech_id, :visible, :researching, :partial_credit)
+      params.require(:tech_instance).permit(:country_id, :master_tech_id, :visible, :researching, :partial_credit)
     end
 end
