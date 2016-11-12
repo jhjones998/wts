@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
     user = User.find_by(name: params[:session][:username])
     if user && user.authenticate(params[:session][:password])
       log_in user
-      render 'welcome/index'
+      redirect_to root_path
     else
       render 'failed'
     end
