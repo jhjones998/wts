@@ -6,6 +6,13 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+TechTree.delete_all
+MasterTech.delete_all
+Artifact.delete_all
+Access.delete_all
+Country.delete_all
+User.delete_all
+
 User.create(name:'wts_admin', password:'wts_password', admin:true)
 
 SFTU = User.create(name:'Science and Financial Times', password:'SFT399', admin:false)
@@ -31,6 +38,7 @@ Russia = Country.create(name:'Russia', user:USAU)
 UK = Country.create(name:'UK', user:USAU)
 USA = Country.create(name:'USA', user:USAU)
 
+
 Access.create(user:BrazilU, country:Brazil, artifacts:true)
 Access.create(user:ChinaU, country:China, artifacts:true)
 Access.create(user:FranceU, country:France, artifacts:true)
@@ -40,6 +48,7 @@ Access.create(user:JapanU, country:Japan, artifacts:true)
 Access.create(user:RussiaU, country:Russia, artifacts:true)
 Access.create(user:UKU, country:UK, artifacts:true)
 Access.create(user:USAU, country:USA, artifacts:true)
+
 
 Artifact.create(country:Brazil, l1:0, l2:0, l3:0, l4:0, l5:0, l6:0)
 Artifact.create(country:China, l1:0, l2:0, l3:0, l4:0, l5:0, l6:0)
@@ -51,19 +60,20 @@ Artifact.create(country:Russia, l1:0, l2:0, l3:0, l4:0, l5:0, l6:0)
 Artifact.create(country:UK, l1:0, l2:0, l3:0, l4:0, l5:0, l6:0)
 Artifact.create(country:USA, l1:0, l2:0, l3:0, l4:0, l5:0, l6:0)
 
+
 A1 = MasterTech.create(wts_id:'A1', level:1, name:'Short Range Corrosive Bullets', desc:'Better Attack Card 1', unresearched_desc:'Serum to better penetrate alien armor', initially_visible:true)
 A2 = MasterTech.create(wts_id:'A2', level:2, name:'Corrosive Splatter Bullets', desc:'Better Attack Card 2', unresearched_desc:'Testing corrosive extraterrestrial serum for larger area of effect', initially_visible:false)
 A3 = MasterTech.create(wts_id:'A3', level:3, name:'Long Range EX Splatter Cannon', desc:'Damage +1 Permanently', unresearched_desc:'Developing extra sticky projectile cannon with greater reach', initially_visible:false)
 A4 = MasterTech.create(wts_id:'A4', level:4, name:'Interceptor Weapons Function in Space', desc:'“Didn´t I promise you fireworks?”', unresearched_desc:'Advancing weapon propulsion tech for usage in space', initially_visible:false)
 
-A2 = MasterTech.create(wts_id:'B2', level:2, name:'Shredder Missiles', desc:'One-shot Missile Card 1', unresearched_desc:'Long range extraterrestial craft targetting and serum delivery system', initially_visible:false)
-A3 = MasterTech.create(wts_id:'B3', level:3, name:'Virulent Xenogeneic Virus', desc:'One Shot Bio Weapon Card', unresearched_desc:'Alter corrosive serum to affect extraterrestrial organic tissue with a long range delivery system', initially_visible:false) #Political Control
-A4 = MasterTech.create(wts_id:'B4', level:4, name:'Large Spread Shredder Missiles', desc:'One Shot Missile Card', unresearched_desc:'Larger spread explosive head for maximum penetration', initially_visible:false) #POLITICAL_CONTROL
+B2 = MasterTech.create(wts_id:'B2', level:2, name:'Shredder Missiles', desc:'One-shot Missile Card 1', unresearched_desc:'Long range extraterrestial craft targetting and serum delivery system', initially_visible:false)
+B3 = MasterTech.create(wts_id:'B3', level:3, name:'Virulent Xenogeneic Virus', desc:'One Shot Bio Weapon Card', unresearched_desc:'Alter corrosive serum to affect extraterrestrial organic tissue with a long range delivery system', initially_visible:false) #Political Control
+B4 = MasterTech.create(wts_id:'B4', level:4, name:'Large Spread Shredder Missiles', desc:'One Shot Missile Card', unresearched_desc:'Larger spread explosive head for maximum penetration', initially_visible:false) #POLITICAL_CONTROL
 
-A2 = MasterTech.create(wts_id:'C2', level:2, name:'Point Defense Laser Machine Gun Upgrade', desc:'Better Defensive Card', unresearched_desc:'Improving identification and shielding of fast moving projectiles', initially_visible:false)
-A3 = MasterTech.create(wts_id:'C3', level:3, name:'Point Defense Faster Tracking', desc:'Better Defensive Card', unresearched_desc:'Instantaneous identification and shielding of fast moving projectiles', initially_visible:false)
-A4 = MasterTech.create(wts_id:'C4', level:4, name:'Point Defense Lasers', desc:'Defense +1 Permanently', unresearched_desc:'Alien impact resistant shielding', initially_visible:false)
-A5 = MasterTech.create(wts_id:'C5', level:5, name:'A Christmas Sweater', desc:'Interceptor/Nukes Can Withstand Cold Vacuum/Reentry', unresearched_desc:'“Something to keep the nukes/interceptors warm at night”', initially_visible:false)
+C2 = MasterTech.create(wts_id:'C2', level:2, name:'Point Defense Laser Machine Gun Upgrade', desc:'Better Defensive Card', unresearched_desc:'Improving identification and shielding of fast moving projectiles', initially_visible:false)
+C3 = MasterTech.create(wts_id:'C3', level:3, name:'Point Defense Faster Tracking', desc:'Better Defensive Card', unresearched_desc:'Instantaneous identification and shielding of fast moving projectiles', initially_visible:false)
+C4 = MasterTech.create(wts_id:'C4', level:4, name:'Point Defense Lasers', desc:'Defense +1 Permanently', unresearched_desc:'Alien impact resistant shielding', initially_visible:false)
+C5 = MasterTech.create(wts_id:'C5', level:5, name:'A Christmas Sweater', desc:'Interceptor/Nukes Can Withstand Cold Vacuum/Reentry', unresearched_desc:'“Something to keep the nukes/interceptors warm at night”', initially_visible:false)
 
 D2 = MasterTech.create(wts_id:'D2', level:2, name:'Heavy Smoke Screen', desc:'Better Acquisition Card', unresearched_desc:'Close range distraction upgrades', initially_visible:false)
 D3 = MasterTech.create(wts_id:'D3', level:3, name:'Smoke Screen With Stun Serum', desc:'Acquisition +1 Permanently', unresearched_desc:'Enhanced distraction/extraction techniques', initially_visible:false)
@@ -125,54 +135,60 @@ M3=MasterTech.create(wts_id:'M3', level:3, name:'Long Range Data Stream Injectio
 
 #MasterTech.create(wts_id:'', level:, name:'', desc:'', unresearched_desc:'', initially_visible:false)
 
-A1.children << [A1, B1, C1, D1]
-E1.children << E2
-F1.children << F2
-G1.children << G2
-I1.children << I2
-J1.children << J2
-L1.children << [L2, K1]
-M1.children << M2
+TechTree.create(master_tech:A1, child:A2)
+TechTree.create(master_tech:A1, child:B2)
+TechTree.create(master_tech:A1, child:C2)
+TechTree.create(master_tech:A1, child:D2)
+TechTree.create(master_tech:E1, child:E2)
+TechTree.create(master_tech:F1, child:F2)
+TechTree.create(master_tech:G1, child:G2)
+TechTree.create(master_tech:I1, child:I2)
+TechTree.create(master_tech:J1, child:J2)
+TechTree.create(master_tech:L1, child:L2)
+TechTree.create(master_tech:L1, child:K2)
+TechTree.create(master_tech:M1, child:M2)
 
-A2.children << A3
-B2.children << B3
-C2.children << C3
-D2.children << D3
-E2.children << E3
-F2.children << F3
-G2.children << G3
-I2.children << I3
-J2.children << J3
-K2.children << K3
-L2.children << L3
-M2.children << M3
+TechTree.create(master_tech:A2, child:A3)
+TechTree.create(master_tech:B2, child:B3)
+TechTree.create(master_tech:C2, child:C3)
+TechTree.create(master_tech:D2, child:D3)
+TechTree.create(master_tech:E2, child:E3)
+TechTree.create(master_tech:F2, child:F3)
+TechTree.create(master_tech:G2, child:G3)
+TechTree.create(master_tech:I2, child:I3)
+TechTree.create(master_tech:J2, child:J3)
+TechTree.create(master_tech:K2, child:K3)
+TechTree.create(master_tech:L2, child:L3)
+TechTree.create(master_tech:M2, child:M3)
 
-A3.children << A4
-B3.children << B4
-C3.children << C4
-D3.children << D4
-E3.children << E4
-F3.children << F4
-G3.children << [G4, H4]
-I3.children << I4
-J3.children << J4
-K3.children << K4
-L3.children << L4
+TechTree.create(master_tech:A3, child:A4)
+TechTree.create(master_tech:B3, child:B4)
+TechTree.create(master_tech:C3, child:C4)
+TechTree.create(master_tech:D3, child:D4)
+TechTree.create(master_tech:E3, child:E4)
+TechTree.create(master_tech:F3, child:F4)
+TechTree.create(master_tech:G3, child:G4)
+TechTree.create(master_tech:G3, child:H4)
+TechTree.create(master_tech:I3, child:I4)
+TechTree.create(master_tech:J3, child:J4)
+TechTree.create(master_tech:K3, child:K4)
+TechTree.create(master_tech:L3, child:L4)
 
-C4.children << C5
-D4.children << D5
-E4.children << E5
-F4.children << F5
-G4.children << G5
-I4.children << I5
-J4.children << J5
-K4.children << K5
-L4.children << L5
+TechTree.create(master_tech:C4, child:C5)
+TechTree.create(master_tech:D4, child:D5)
+TechTree.create(master_tech:E4, child:E5)
+TechTree.create(master_tech:F4, child:F5)
+TechTree.create(master_tech:G4, child:G5)
+TechTree.create(master_tech:I4, child:I5)
+TechTree.create(master_tech:J4, child:J5)
+TechTree.create(master_tech:K4, child:K5)
+TechTree.create(master_tech:L4, child:L5)
 
-E5.children << E6
-F5.children << F6
-G5.children << G6
-I5.children << [H6, I6]
+TechTree.create(master_tech:E5, child:E6)
+TechTree.create(master_tech:F5, child:F6)
+TechTree.create(master_tech:G5, child:G6)
+TechTree.create(master_tech:I5, child:H6)
+TechTree.create(master_tech:I5, child:I6)
 
 MasterTech.all.each do |t|
   Country.all.each do |c|
