@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   include ApplicationHelper
 
   def require_admin
-    user_logged_in = User.find(session[:user_id])
+    user_logged_in = get_current_user
     unless is_admin? user_logged_in
       redirect_to root_path
     end
@@ -16,5 +16,9 @@ class ApplicationController < ActionController::Base
     unless is_logged_in?
       redirect_to '/login'
     end
+  end
+
+  def get_current_user
+    User.find(session[:user_id])
   end
 end
