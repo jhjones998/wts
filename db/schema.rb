@@ -66,7 +66,7 @@ ActiveRecord::Schema.define(version: 20161113011330) do
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
     t.integer  "country_id"
-    t.boolean  "reseached"
+    t.boolean  "researched"
     t.index ["country_id"], name: "index_tech_instances_on_country_id", using: :btree
     t.index ["master_tech_id"], name: "index_tech_instances_on_master_tech_id", using: :btree
   end

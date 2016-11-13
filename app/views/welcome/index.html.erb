@@ -32,7 +32,7 @@
                   <p class="list-group-item-text">Level: <%= t.master_tech.level %></p>
                   <p class="list-group-item-text">ID: <%= t.master_tech.wts_id %></p>
                   <p class="list-group-item-text"><%= t.master_tech.unresearched_desc %></p>
-                  <% if @current_user.can_research?(t) %>
+                  <% if @current_user.owns_tech_instance?(t) %>
                     <%= form_for(:welcome, url: researching) do |f| %>
                       <%= f.hidden_field :tech_id, value: t.id %>
                       <% if t.researching %>
@@ -49,39 +49,37 @@
           </div>
             <% if @current_user.has_access_to_artifacts?(c) %>
               <div class="row">
-                <div class="col-md-2">
-                  <p class="list-group-item-text"><%= c.artifacts.l1 %> Level 1's</p>
-                  <p class="list-group-item-text">
-                    <a href="#" class="small">
-
-                      Combine
-                    </a>
-                  </p>
-                </div>
-                <div class="col-md-2">
-                  <p class="list-group-item-text"><%= c.artifacts.l2 %> Level 2's</p>
-                  <p class="list-group-item-text"><a href="#" class="small">Split</a></p>
-                  <p class="list-group-item-text"><a href="#" class="small">Combine</a></p>
-                </div>
-                <div class="col-md-2">
-                  <p class="list-group-item-text"><%= c.artifacts.l3 %> Level 3's</p>
-                  <p class="list-group-item-text"><a href="#" class="small">Split</a></p>
-                  <p class="list-group-item-text"><a href="#" class="small">Combine</a></p>
-                </div>
-                <div class="col-md-2">
-                  <p class="list-group-item-text"><%= c.artifacts.l4 %> Level 4's</p>
-                  <p class="list-group-item-text"><a href="#" class="small">Split</a></p>
-                  <p class="list-group-item-text"><a href="#" class="small">Combine</a></p>
-                </div>
-                <div class="col-md-2">
-                  <p class="list-group-item-text"><%= c.artifacts.l5 %> Level 5's</p>
-                  <p class="list-group-item-text"><a href="#" class="small">Split</a></p>
-                  <p class="list-group-item-text"><a href="#" class="small">Combine</a></p>
-                </div>
-                <div class="col-md-2">
-                  <p class="list-group-item-text"><%= c.artifacts.l6 %> Level 6's</p>
-                  <p class="list-group-item-text"><a href="#" class="small">Split</a></p>
-                </div>
+                <% (1..6).each do |l| %>
+                  <div class="col-md-2">
+                    <p class="list-group-item-text"><%= c.artifacts["l#{l}"] %> Level <%= l %>'s</p>
+                    <p class="list-group-item-text">
+                      <a href="#" class="small">
+                        <% if l < 6 %>
+                          <%= form_for(:welcome, url: combine_artifacts) do |f| %>
+                            <%= f.hidden_field :country_id, value:c.id %>
+                            <%= f.hidden_field :level, value: l %>
+                            <% if c.artifacts["l#{l}"] > 0 %>
+                              <%= f.submit 'Combine', class: 'small' %>
+                            <% else %>
+                              <p class="small text-white">Combine</p>
+                            <% end %>
+                          <% end %>
+                        <% end %>
+                        <% if l > 1 %>
+                          <%= form_for(:welcome, url: split_artifact) do |f| %>
+                            <%= f.hidden_field :country_id, value:c.id %>
+                            <%= f.hidden_field :level, value: l %>
+                            <% if c.artifacts["l#{l}"] > 0 %>
+                              <%= f.submit 'Split', class: 'small' %>
+                            <% else %>
+                              <p class="small text-white">Split</p>
+                            <% end %>
+                          <% end %>
+                        <% end %>
+                      </a>
+                    </p>
+                  </div>
+                <% end %>
               </div>
             <% else %>
               <h5 class="list-group-item-heading">Access denied to this country's artifacts</h5>
