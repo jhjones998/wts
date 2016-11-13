@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161112232720) do
+ActiveRecord::Schema.define(version: 20161113011330) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,6 +66,7 @@ ActiveRecord::Schema.define(version: 20161112232720) do
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
     t.integer  "country_id"
+    t.boolean  "reseached"
     t.index ["country_id"], name: "index_tech_instances_on_country_id", using: :btree
     t.index ["master_tech_id"], name: "index_tech_instances_on_master_tech_id", using: :btree
   end
