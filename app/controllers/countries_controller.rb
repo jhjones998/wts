@@ -1,5 +1,22 @@
 class CountriesController < ApplicationController
-  before_action :set_country, only: [:show, :edit, :update, :destroy]
+  before_action :set_country, only: [:show, :edit, :update, :destroy, :tech]
+  skip_before_action :require_admin, only: [:tech]
+
+  def root
+    uc = @user_country ? @user_country : Country.find_by(name:"Brazil")
+    redirect_to action:'tech', id:uc.id
+  end
+
+  def tech
+    @countries = Country.all.order(:name)
+  end
+
+  def researching(tech_id, val)
+    tech_instance = TechInstance.find(tech_id)
+    if @current_user.can_toggle_researching?(tech_instance)
+      tech_instance.update(researching: val)
+    end
+  end
 
   # GET /countries
   # GET /countries.json
@@ -65,6 +82,7 @@ class CountriesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_country
       @country = Country.find(params[:id])
+      @user_country = Country.find_by(user_id:@current_user.id)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

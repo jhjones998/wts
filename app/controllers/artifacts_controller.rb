@@ -1,5 +1,6 @@
 class ArtifactsController < ApplicationController
-  before_action :set_artifact, only: [:show, :edit, :update, :destroy]
+  before_action :set_artifact, only: [:show, :edit, :update, :destroy, :combine, :split]
+  skip_before_action :require_admin, only: [:combine, :split]
 
   # GET /artifacts
   # GET /artifacts.json
@@ -59,6 +60,14 @@ class ArtifactsController < ApplicationController
       format.html { redirect_to artifacts_url, notice: 'Artifact was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def split(level)
+    @artifact.split(level, @current_user)
+  end
+
+  def combine(level)
+    @artifact.combine(level, @current_user)
   end
 
   private

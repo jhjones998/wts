@@ -1,0 +1,88 @@
+<div class="container">
+  <div class="navbar">
+        <ul class="nav nav-tabs">
+          <% @countries.each do |c| %>
+          <li class="nav-item">
+            <%= link_to c.name, controller:'countries', action:'tech', id:c.id, class:'nav-link' %>
+          </li>
+          <% end %>
+        </ul>
+  </div>
+  <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="<%= @country.name %>">
+          <% if @current_user.has_access_to_tech?(@country) %>
+              <div class="row">
+               <% @country.researched_techs.find_each do |t| %>
+                    <div class="col-xs-6 col-md-4">
+                      <h5 class="list-group-item-heading"><%= t.master_tech.name %></h5>
+                      <p class="list-group-item-text">Level: <%= t.master_tech.level %></p>
+                      <p class="list-group-item-text">ID: <%= t.master_tech.wts_id %></p>
+                      <p class="list-group-item-text"><%= t.master_tech.desc %></p>
+                    </div>
+                <% end %>
+              </div>
+              <div class="row">
+                <% @country.unresearched_techs.find_each do |t| %>
+                    <div class="col-xs-6 col-md-4">
+                      <h5 class="list-group-item-heading"><%= t.master_tech.name %></h5>
+                      <% if t.researching %>
+                          <h6 class="list-group-item-heading">Researching</h6>
+                      <% end %>
+                      <p class="list-group-item-text">Level: <%= t.master_tech.level %></p>
+                      <p class="list-group-item-text">ID: <%= t.master_tech.wts_id %></p>
+                      <p class="list-group-item-text"><%= t.master_tech.unresearched_desc %></p>
+                      <% if false && @current_user.can_toggle_researching?(t) %>
+                          <%= form_for(:welcome, url: researching) do |f| %>
+                              <%= f.hidden_field :tech_id, value: t.id %>
+                              <% if t.researching %>
+                                  <%= f.hidden_field :val, value: false %>
+                                  <%= f.submit 'Stop researching', class: 'btn btn-primary' %>
+                              <% else %>
+                                  <%= f.hidden_field :val, value: true %>
+                                  <%= f.submit 'Research', class: 'btn btn-primary' %>
+                              <% end %>
+                          <% end %>
+                      <% end %>
+                    </div>
+                <% end %>
+              </div>
+              <% if @current_user.has_access_to_artifacts?(@country) %>
+                  <div class="row">
+                    <% (1..6).each do |l| %>
+                        <% count = @country.artifact["l#{l}"] %>
+                        <div class="col-md-2">
+                          <p class="list-group-item-text"><%= count %> Level <%= l %>'s</p>
+                          <p class="list-group-item-text">
+                            <a href="#" class="small">
+                              <% if l < 6 %>
+                                  <%= form_tag("/artifacts/#{@country.artifact.id}/combine", method: "post") do %>
+                                      <%= hidden_field_tag(:level, value: l) %>
+                                      <% if count > 0 %>
+                                          <%= submit_tag("Combine", class: 'small')  %>
+                                      <% else %>
+                                        <p class="small text-white">Combine</p>
+                                  <% end %>
+                              <% end %>
+                          <% end %>
+                          <% if l > 1 %>
+                              <%= form_tag("/artifacts/#{@country.artifact.id}/split", method: "post") do %>
+                                  <%= hidden_field_tag(:level, value: l) %>
+                                  <% if count > 0 %>
+                                      <%= submit_tag("Split", class: 'small') %>
+                                  <% else %>
+                                      <p class="small text-white">Split</p>
+                                  <% end %>
+                              <% end %>
+                          <% end %>
+                          </a>
+                          </p>
+                        </div>
+                    <% end %>
+                  </div>
+              <% end %>
+          <% else %>
+              <h5 class="list-group-item-heading">Access denied to this country's tech tree</h5>
+          <% end %>
+        </div>
+  </div>
+</div>
