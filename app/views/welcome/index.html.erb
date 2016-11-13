@@ -1,56 +1,95 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <div class="navbar">
+    <% countries.each do |c| %>
+      <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a class="nav-link active" href="#<%= c.name %>"><%= c.name %></a>
+        </li>
+      </ul>
+    <% end %>
+  </div>
+  <div class="tab-content">
+    <% countries.each do |c| %>
+      <div role="tabpanel" class="tab-pane active" id="<%= c.name %>">
+        <% if @current_user.has_access_to_tech?(c) %>
+          <div class="row">
+            <% c.researched_tech.each do |t| %>
+                <div class="col-xs-6 col-md-4">
+                  <h5 class="list-group-item-heading"><%= t.master_tech.name %></h5>
+                  <p class="list-group-item-text">Level: <%= t.master_tech.level %></p>
+                  <p class="list-group-item-text">ID: <%= t.master_tech.wts_id %></p>
+                  <p class="list-group-item-text"><%= t.master_tech.desc %></p>
+                </div>
+            <% end %>
+          </div>
+          <div class="row">
+            <% c.unresearched_tech.each do |t| %>
+                <div class="col-xs-6 col-md-4">
+                  <h5 class="list-group-item-heading"><%= t.master_tech.name %></h5>
+                  <% if t.researching %>
+                      <h6 class="list-group-item-heading">Researching</h6>
+                  <% end %>
+                  <p class="list-group-item-text">Level: <%= t.master_tech.level %></p>
+                  <p class="list-group-item-text">ID: <%= t.master_tech.wts_id %></p>
+                  <p class="list-group-item-text"><%= t.master_tech.unresearched_desc %></p>
+                  <% if @current_user.can_research?(t) %>
+                    <%= form_for(:welcome, url: researching) do |f| %>
+                      <%= f.hidden_field :tech_id, value: t.id %>
+                      <% if t.researching %>
+                        <%= f.hidden_field :val, value: false %>
+                        <%= f.submit 'Stop researching', class: 'btn btn-primary' %>
+                      <% else %>
+                        <%= f.hidden_field :val, value: true %>
+                        <%= f.submit 'Research', class: 'btn btn-primary' %>
+                      <% end %>
+                    <% end %>
+                  <% end %>
+                </div>
+            <% end %>
+          </div>
+            <% if @current_user.has_access_to_artifacts?(c) %>
+              <div class="row">
+                <div class="col-md-2">
+                  <p class="list-group-item-text"><%= c.artifacts.l1 %> Level 1's</p>
+                  <p class="list-group-item-text">
+                    <a href="#" class="small">
 
-<h1>User Home</h1>
-
-<div class="row">
-  <% @teches.each do |t| %>
-    <div class="col-xs-6 col-md-4">
-      <h5 class="list-group-item-heading"><%= t.name %></h5>
-      <p class="list-group-item-text">Level: <%= t.level %></p>
-      <p class="list-group-item-text">ID: <%= t.wts_id %></p>
-      <p class="list-group-item-text"><%= t.desc %></p>
-    </div>
-  <% end %>
-</div>
-<br />
-<div class="row">
-  <% @teches.each do |t| %>
-      <div class="col-xs-6 col-md-4">
-        <h5 class="list-group-item-heading"><%= t.name %></h5>
-        <p class="list-group-item-text">Level: <%= t.level %></p>
-        <p class="list-group-item-text">ID: <%= t.wts_id %></p>
-        <p class="list-group-item-text"><%= t.desc %></p>
+                      Combine
+                    </a>
+                  </p>
+                </div>
+                <div class="col-md-2">
+                  <p class="list-group-item-text"><%= c.artifacts.l2 %> Level 2's</p>
+                  <p class="list-group-item-text"><a href="#" class="small">Split</a></p>
+                  <p class="list-group-item-text"><a href="#" class="small">Combine</a></p>
+                </div>
+                <div class="col-md-2">
+                  <p class="list-group-item-text"><%= c.artifacts.l3 %> Level 3's</p>
+                  <p class="list-group-item-text"><a href="#" class="small">Split</a></p>
+                  <p class="list-group-item-text"><a href="#" class="small">Combine</a></p>
+                </div>
+                <div class="col-md-2">
+                  <p class="list-group-item-text"><%= c.artifacts.l4 %> Level 4's</p>
+                  <p class="list-group-item-text"><a href="#" class="small">Split</a></p>
+                  <p class="list-group-item-text"><a href="#" class="small">Combine</a></p>
+                </div>
+                <div class="col-md-2">
+                  <p class="list-group-item-text"><%= c.artifacts.l5 %> Level 5's</p>
+                  <p class="list-group-item-text"><a href="#" class="small">Split</a></p>
+                  <p class="list-group-item-text"><a href="#" class="small">Combine</a></p>
+                </div>
+                <div class="col-md-2">
+                  <p class="list-group-item-text"><%= c.artifacts.l6 %> Level 6's</p>
+                  <p class="list-group-item-text"><a href="#" class="small">Split</a></p>
+                </div>
+              </div>
+            <% else %>
+              <h5 class="list-group-item-heading">Access denied to this country's artifacts</h5>
+            <% end %>
+        <% else %>
+            <h5 class="list-group-item-heading">Access denied to this country's tech tree</h5>
+        <% end %>
       </div>
-  <% end %>
-</div>
-<br />
-<div class="row">
-  <div class="col-md-2">
-    <p class="list-group-item-text">6 Level 1's</p>
-    <p class="list-group-item-text"><a href="#" class="small">Combine</a></p>
-  </div>
-  <div class="col-md-2">
-    <p class="list-group-item-text">3 Level 2's</p>
-    <p class="list-group-item-text"><a href="#" class="small">Split</a></p>
-    <p class="list-group-item-text"><a href="#" class="small">Combine</a></p>
-  </div>
-  <div class="col-md-2">
-    <p class="list-group-item-text">0 Level 3's</p>
-    <p class="list-group-item-text"><a href="#" class="small">Split</a></p>
-    <p class="list-group-item-text"><a href="#" class="small">Combine</a></p>
-  </div>
-  <div class="col-md-2">
-    <p class="list-group-item-text">8 Level 4's</p>
-    <p class="list-group-item-text"><a href="#" class="small">Split</a></p>
-    <p class="list-group-item-text"><a href="#" class="small">Combine</a></p>
-  </div>
-  <div class="col-md-2">
-    <p class="list-group-item-text">1 Level 5's</p>
-    <p class="list-group-item-text"><a href="#" class="small">Split</a></p>
-    <p class="list-group-item-text"><a href="#" class="small">Combine</a></p>
-  </div>
-  <div class="col-md-2">
-    <p class="list-group-item-text">1 Level 6's</p>
-    <p class="list-group-item-text"><a href="#" class="small">Split</a></p>
+    <% end %>
   </div>
 </div>
