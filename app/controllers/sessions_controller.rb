@@ -1,7 +1,9 @@
 class SessionsController < ApplicationController
   skip_before_action :require_login
   skip_before_action :require_admin
-  def new
+  skip_before_action :get_current_user
+
+  def new;
 
   end
 

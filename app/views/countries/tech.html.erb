@@ -10,6 +10,8 @@
   </div>
   <div class="tab-content">
         <div role="tabpanel" class="tab-pane active" id="<%= @country.name %>">
+          <h1><%= @country.name %></h1>
+          <h2><%= @user_country.name %></h2>
           <% if @current_user.has_access_to_tech?(@country) %>
               <div class="row">
                <% @country.researched_techs.find_each do |t| %>

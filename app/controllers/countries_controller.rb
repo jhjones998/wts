@@ -1,9 +1,13 @@
 class CountriesController < ApplicationController
   before_action :set_country, only: [:show, :edit, :update, :destroy, :tech]
-  skip_before_action :require_admin, only: [:tech]
+  skip_before_action :require_admin, only: [:tech, :root]
 
   def root
-    uc = @user_country ? @user_country : Country.find_by(name:"Brazil")
+    uc = Country.find_by(name:@current_user.name);
+    if(!uc)
+      uc = Country.find_by(name:"Brazil")
+    end
+
     redirect_to action:'tech', id:uc.id
   end
 
