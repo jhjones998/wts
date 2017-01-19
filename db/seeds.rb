@@ -28,14 +28,14 @@ UKU = User.create(name:'UK', password:'MI5007', admin:false)
 USAU = User.create(name:'USA', password:'USA235', admin:false)
 
 
-Brazil = Country.create(name:'Brazil', user:USAU)
-China = Country.create(name:'China', user:USAU)
-France = Country.create(name:'France', user:USAU)
-Germany = Country.create(name:'Germany', user:USAU)
-India = Country.create(name:'India', user:USAU)
-Japan = Country.create(name:'Japan', user:USAU)
-Russia = Country.create(name:'Russia', user:USAU)
-UK = Country.create(name:'UK', user:USAU)
+Brazil = Country.create(name:'Brazil', user:BrazilU)
+China = Country.create(name:'China', user:ChinaU)
+France = Country.create(name:'France', user:FranceU)
+Germany = Country.create(name:'Germany', user:GermanyU)
+India = Country.create(name:'India', user:IndiaU)
+Japan = Country.create(name:'Japan', user:JapanU)
+Russia = Country.create(name:'Russia', user:RussiaU)
+UK = Country.create(name:'UK', user:UKU)
 USA = Country.create(name:'USA', user:USAU)
 
 
@@ -94,7 +94,7 @@ F4=MasterTech.create(wts_id:'F4', level:4, name:'High Efficiency Solar Panels', 
 F5=MasterTech.create(wts_id:'F5', level:5, name:'Self-Sustaining Photon Energy', desc:'1/Turn +1 Reserve and +1 PR', unresearched_desc:'Converting Mass Energy into human food source', initially_visible:false)
 F6=MasterTech.create(wts_id:'F6', level:6, name:'Ozone Replicators', desc:'Income Level +1, +2 Reserves/Turn, Lowering of Global Terror (if first)', unresearched_desc:'Discovering method for human food/energy absorption through skin', initially_visible:false)
 
-G1=MasterTech.create(wts_id:'G1', level:1, name:'Visual Temporal Gateway', desc:'See tech descriptions before they are researched', unresearched_desc:'localized temporal viewpoint', initially_visible:true)
+G1=MasterTech.create(wts_id:'G1', level:1, name:'Visual Temporal Gateway', desc:'See where one tech branch goes', unresearched_desc:'localized temporal viewpoint', initially_visible:true)
 G2=MasterTech.create(wts_id:'G2', level:2, name:'Durable Nanobots', desc:'1/Turn +1 Research Credit', unresearched_desc:'Increasing nanobot efficiency and reliability', initially_visible:false) #POLITICAL CONTROL
 G3=MasterTech.create(wts_id:'G3', level:3, name:'Virtual Reality Gaming Environment', desc:'1/Turn Secret Bid and 3 Free Bid Tokens', unresearched_desc:'Completely immersive virtual environments', initially_visible:false)#POLITICAL CONTROL
 G4=MasterTech.create(wts_id:'G4', level:4, name:'Net Coated w/Xenogeneic Paralytic Venom', desc:'One Shot Alien Capture Card', unresearched_desc:'“The Invisible Trap”', initially_visible:false)
@@ -104,7 +104,7 @@ G6=MasterTech.create(wts_id:'G6', level:6, name:'Quantum Computing', desc:'1/Tur
 H4=MasterTech.create(wts_id:'H4', level:4, name:'Efficient Element Breakdown System', desc:'1/Turn +2 Research Credits', unresearched_desc:'“The best tiny little helpers money can buy”', initially_visible:false) #POLITICAL CONTROL
 H6=MasterTech.create(wts_id:'H6', level:6, name:'Extreme Long Range Imaging/Targeting', desc:'Can Detect Alien Bases on Mars', unresearched_desc:'“Nowhere left to hide”', initially_visible:false)
 
-I1=MasterTech.create(wts_id:'I1', level:1, name:'Extraction Preservation', desc:'15% Chance that your artifact is not consumed after a successful research', unresearched_desc:'Excess artifact repurposing', initially_visible:true)#POLITICAL CONTROL
+I1=MasterTech.create(wts_id:'I1', level:1, name:'Extraction Preservation', desc:'Can combine 2 artifacts to 1 of the next level', unresearched_desc:'Excess artifact repurposing', initially_visible:true)#POLITICAL CONTROL
 I2=MasterTech.create(wts_id:'I2', level:2, name:'Temporary Miniaturization', desc:'1/Turn +1 Free Plane Result', unresearched_desc:'Compression of artifact scanning tools', initially_visible:false)
 I3=MasterTech.create(wts_id:'I3', level:3, name:'Non-Authentic Xenocraft Imaging', desc:'Detect Drones on Map', unresearched_desc:'Decoding artifact materials to better identify saucers from false counterparts', initially_visible:false)
 I4=MasterTech.create(wts_id:'I4', level:4, name:'Alien Command Interceptor', desc:'1/Turn Before Battle Roll d6, 4-6 See Opponents Card then Place Card', unresearched_desc:'Debugging alien military command frequencies', initially_visible:false)
