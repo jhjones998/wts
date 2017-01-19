@@ -12,4 +12,7 @@ class Country < ApplicationRecord
   def unresearched_techs
     self.tech_instances.where(researched: false, visible: true).order(:updated_at)
   end
+  def flag
+    self.name+' Flag.png'
+  end
 end

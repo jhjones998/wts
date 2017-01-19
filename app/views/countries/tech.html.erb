@@ -1,13 +1,20 @@
 <div class="container">
-  <div class="navbar">
-        <ul class="nav nav-tabs">
+  <nav class="navbar navbar-dark bg-primary navbar-fixed-top">
+    <div class="clearfix float-lg-left">
+      <button aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler hidden-lg-up float-xs-right" data-target="#navbarResponsive" data-toggle="collapse" type="button"></button>
+      <a class="navbar-brand"><%=image_tag(@country.flag, :alt => @country.name+' Flag', width:'64', height:'32') %></a>
+    </div>
+    <div class="collapse navbar-toggleable-md" id="navbarResponsive">
+      <ul class="nav navbar-nav">
           <% @countries.each do |c| %>
-          <li class="nav-item">
-            <%= link_to c.name, controller:'countries', action:'tech', id:c.id, class:'nav-link' %>
-          </li>
+              <li class="nav-item<%= ' active' if c.name==@country.name %>">
+                <%= link_to c.name, { controller:'countries', action:'tech', id:c.id }, class:'nav-link' %>
+              </li>
           <% end %>
         </ul>
-  </div>
+    </div>
+  </nav>
+
   <div class="tab-content">
         <div role="tabpanel" class="tab-pane active" id="<%= @country.name %>">
           <h1><%= @country.name %></h1>
