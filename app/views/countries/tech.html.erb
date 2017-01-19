@@ -1,97 +1,118 @@
 <div class="container">
   <nav class="navbar navbar-dark bg-primary navbar-fixed-top">
     <div class="clearfix float-lg-left">
-      <button aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler hidden-lg-up float-xs-right" data-target="#navbarResponsive" data-toggle="collapse" type="button"></button>
-      <a class="navbar-brand"><%=image_tag(@country.flag, :alt => @country.name+' Flag', width:'64', height:'32') %></a>
+      <button aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler hidden-lg-up float-xs-right" data-target="#navbarTop" data-toggle="collapse" type="button"></button>
+      <a class="navbar-brand"><%= image_tag(@country.flag, :alt => @country.name+' Flag', width: '64', height: '32') %></a>
     </div>
-    <div class="collapse navbar-toggleable-md" id="navbarResponsive">
+    <div class="collapse navbar-toggleable-md" id="navbarTop">
       <ul class="nav navbar-nav">
-          <% @countries.each do |c| %>
-              <li class="nav-item<%= ' active' if c.name==@country.name %>">
-                <%= link_to c.name, { controller:'countries', action:'tech', id:c.id }, class:'nav-link' %>
-              </li>
-          <% end %>
-        </ul>
+        <% @countries.each do |c| %>
+            <li class="nav-item<%= ' active' if c.name==@country.name %>">
+              <%= link_to c.name, {controller: 'countries', action: 'tech', id: c.id}, class: 'nav-link' %>
+            </li>
+        <% end %>
+      </ul>
     </div>
   </nav>
 
-  <div class="tab-content">
-        <div role="tabpanel" class="tab-pane active" id="<%= @country.name %>">
-          <h1><%= @country.name %></h1>
-          <h2><%= @user_country.name %></h2>
-          <% if @current_user.has_access_to_tech?(@country) %>
-              <div class="row">
-               <% @country.researched_techs.find_each do |t| %>
-                    <div class="col-xs-6 col-md-4">
-                      <h5 class="list-group-item-heading"><%= t.master_tech.name %></h5>
-                      <p class="list-group-item-text">Level: <%= t.master_tech.level %></p>
-                      <p class="list-group-item-text">ID: <%= t.master_tech.wts_id %></p>
-                      <p class="list-group-item-text"><%= t.master_tech.desc %></p>
-                    </div>
-                <% end %>
-              </div>
-              <div class="row">
-                <% @country.unresearched_techs.find_each do |t| %>
-                    <div class="col-xs-6 col-md-4">
-                      <h5 class="list-group-item-heading"><%= t.master_tech.name %></h5>
-                      <% if t.researching %>
-                          <h6 class="list-group-item-heading">Researching</h6>
-                      <% end %>
-                      <p class="list-group-item-text">Level: <%= t.master_tech.level %></p>
-                      <p class="list-group-item-text">ID: <%= t.master_tech.wts_id %></p>
-                      <p class="list-group-item-text"><%= t.master_tech.unresearched_desc %></p>
-                      <% if false && @current_user.can_toggle_researching?(t) %>
-                          <%= form_for(:welcome, url: researching) do |f| %>
-                              <%= f.hidden_field :tech_id, value: t.id %>
-                              <% if t.researching %>
-                                  <%= f.hidden_field :val, value: false %>
-                                  <%= f.submit 'Stop researching', class: 'btn btn-primary' %>
-                              <% else %>
-                                  <%= f.hidden_field :val, value: true %>
-                                  <%= f.submit 'Research', class: 'btn btn-primary' %>
-                              <% end %>
-                          <% end %>
-                      <% end %>
-                    </div>
-                <% end %>
-              </div>
-              <% if @current_user.has_access_to_artifacts?(@country) %>
-                  <div class="row">
-                    <% (1..6).each do |l| %>
-                        <% count = @country.artifact["l#{l}"] %>
-                        <div class="col-md-2">
-                          <p class="list-group-item-text"><%= count %> Level <%= l %>'s</p>
-                          <p class="list-group-item-text">
-                            <a href="#" class="small">
-                              <% if l < 6 %>
-                                  <%= form_tag("/artifacts/#{@country.artifact.id}/combine", method: "post") do %>
-                                      <%= hidden_field_tag(:level, value: l) %>
-                                      <% if count > 0 %>
-                                          <%= submit_tag("Combine", class: 'small')  %>
-                                      <% else %>
-                                        <p class="small text-white">Combine</p>
-                                  <% end %>
-                              <% end %>
-                          <% end %>
-                          <% if l > 1 %>
-                              <%= form_tag("/artifacts/#{@country.artifact.id}/split", method: "post") do %>
-                                  <%= hidden_field_tag(:level, value: l) %>
-                                  <% if count > 0 %>
-                                      <%= submit_tag("Split", class: 'small') %>
-                                  <% else %>
-                                      <p class="small text-white">Split</p>
-                                  <% end %>
-                              <% end %>
-                          <% end %>
-                          </a>
-                          </p>
-                        </div>
-                    <% end %>
-                  </div>
-              <% end %>
-          <% else %>
-              <h5 class="list-group-item-heading">Access denied to this country's tech tree</h5>
-          <% end %>
+  <% if @current_user.has_access_to_artifacts?(@country) %>
+      <nav class="navbar navbar-dark bg-primary navbar-fixed-bottom">
+        <div class="clearfix float-lg-left">
+          <button aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler hidden-lg-up float-xs-right" data-target="#navbarBottom" data-toggle="collapse" type="button"></button>
         </div>
+        <div class="collapse navbar-toggleable-md" id="navbarBottom">
+          <h5 class="navbar-brand">Artifacts</h5>
+          <%= form_tag("/artifacts/#{@country.artifact.id}/combine", method: "post", class: "form-inline") do -%>
+              <div class="btn-group btn-group-md">
+                <button type="button" class="btn btn-outline-info text-white" disabled="true">1:</button>
+                <button type="button" class="btn btn-secondary bg-faded" disabled="true"><%= @country.artifact["l1"] %></button>
+                <%= content_tag :button, '>', { type:'submit', name:'commit', data: {confirm: 'Combine two level 1 artifacts into a level 2?'}, class: 'btn btn-warning', value: '3' } if @country.can_combine(1) %>
+              </div>
+              <div class="btn-group btn-group-md">
+                <button type="button" class="btn btn-outline-info text-white" disabled="true">2:</button>
+                <button type="button" class="btn btn-secondary bg-faded" disabled="true"><%= @country.artifact["l2"] %></button>
+                <%= content_tag :button, '>', { type:'submit', name:'commit', data: {confirm: 'Combine two level 2 artifacts into a level 3?'}, class: 'btn btn-warning', value: '3' } if @country.can_combine(2) %>
+              </div>
+              <div class="btn-group btn-group-md">
+                <button type="button" class="btn btn-outline-info text-white" disabled="true">3:</button>
+                <button type="button" class="btn btn-secondary bg-faded" disabled="true"><%= @country.artifact["l3"] %></button>
+                <%= content_tag :button, '>', { type:'submit', name:'commit', data: {confirm: 'Combine two level 3 artifacts into a level 4?'}, class: 'btn btn-warning', value: '3' } if @country.can_combine(3) %>
+              </div>
+              <div class="btn-group btn-group-md">
+                <button type="button" class="btn btn-outline-info text-white" disabled="true">4:</button>
+                <button type="button" class="btn btn-secondary bg-faded" disabled="true"><%= @country.artifact["l4"] %></button>
+                <%= content_tag :button, '>', { type:'submit', name:'commit', data: {confirm: 'Combine two level 4 artifacts into a level 5?'}, class: 'btn btn-warning', value: '4' } if @country.can_combine(4) %>
+              </div>
+              <div class="btn-group btn-group-md">
+                <button type="button" class="btn btn-outline-info text-white" disabled="true">5:</button>
+                <button type="button" class="btn btn-secondary bg-faded" disabled="true"><%= @country.artifact["l5"] %></button>
+                <%= content_tag :button, '>', { type:'submit', name:'commit', data: {confirm: 'Combine two level 5 artifacts into a level 6?'}, class: 'btn btn-warning', value: '5' } if @country.can_combine(5) %>
+              </div>
+              <div class="btn-group btn-group-md">
+                <button type="button" class="btn btn-outline-info text-white" disabled="true">6:</button>
+                <button type="button" class="btn btn-secondary bg-faded" disabled="true"><%= @country.artifact["l6"] %></button>
+              </div>
+
+        <% end -%>
+        </div>
+      </nav>
+  <% end %>
+
+
+  <% if @current_user.has_access_to_tech?(@country) %>
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Lines of Research</h3>
+    </div>
+    <div class="panel-body">
+      <div class="row">
+        <% @country.unresearched_techs.find_each do |t| %>
+            <div class="col-xs-6 col-md-4">
+              <h5 class="list-group-item-heading"><%= t.master_tech.name %></h5>
+              <% if t.researching %>
+                  <h6 class="list-group-item-heading">Researching</h6>
+              <% end %>
+              <p class="list-group-item-text">Level: <%= t.master_tech.level %></p>
+              <p class="list-group-item-text">ID: <%= t.master_tech.wts_id %></p>
+              <p class="list-group-item-text"><%= t.master_tech.unresearched_desc %></p>
+              <% if false && @current_user.can_toggle_researching?(t) %>
+                  <%= form_for(:welcome, url: researching) do |f| %>
+                      <%= f.hidden_field :tech_id, value: t.id %>
+                      <% if t.researching %>
+                          <%= f.hidden_field :val, value: false %>
+                          <%= f.submit 'Stop researching', class: 'btn btn-primary' %>
+                      <% else %>
+                          <%= f.hidden_field :val, value: true %>
+                          <%= f.submit 'Research', class: 'btn btn-primary' %>
+                      <% end %>
+                  <% end %>
+              <% end %>
+            </div>
+        <% end %>
+      </div>
+    </div>
   </div>
+
+  <div class="panel-heading">
+    <h3 class="panel-title">Discoveries</h3>
+  </div>
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="<%= @country.name %>">
+          <div class="row">
+            <% @country.researched_techs.find_each do |t| %>
+                <div class="col-xs-6 col-md-4">
+                  <h5 class="list-group-item-heading"><%= t.master_tech.name %></h5>
+                  <p class="list-group-item-text">Level: <%= t.master_tech.level %></p>
+                  <p class="list-group-item-text">ID: <%= t.master_tech.wts_id %></p>
+                  <p class="list-group-item-text"><%= t.master_tech.desc %></p>
+                </div>
+            <% end %>
+          </div>
+    </div>
+  </div>
+  <% else %>
+      <h3><%= @user_country.name %> does not have access to <%= @country.name %>'s Research</h3>
+  <% end %>
+
 </div>

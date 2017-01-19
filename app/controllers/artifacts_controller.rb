@@ -62,12 +62,14 @@ class ArtifactsController < ApplicationController
     end
   end
 
-  def split(level)
-    @artifact.split(level, @current_user)
+  def split
+    @artifact.combine(params[:commit].to_i, @current_user)
+    redirect_to root_url
   end
 
-  def combine(level)
-    @artifact.combine(level, @current_user)
+  def combine
+    @artifact.combine(params[:commit].to_i, @current_user)
+    redirect_to root_url
   end
 
   private

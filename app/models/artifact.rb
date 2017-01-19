@@ -13,7 +13,7 @@ class Artifact < ApplicationRecord
   end
 
   def combine(level, user)
-    if user.can_combine?(artifact) && (1 <= level <= 5)
+    if user.can_combine?(self) && (1 <= level) && (level <= 5)
       self.transaction do
         if self["l#{level}"] > 1
           self.increment!("l#{level+1}")

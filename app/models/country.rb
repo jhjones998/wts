@@ -15,4 +15,7 @@ class Country < ApplicationRecord
   def flag
     self.name+' Flag.png'
   end
+  def can_combine(level)
+    artifact["l#{level}"]>1
+  end
 end
