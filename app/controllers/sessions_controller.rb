@@ -8,13 +8,14 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = params[:session][:username].camelcase
-    if(user == "Usa")
-      user = 'USA';
+    userp = params[:session][:username].camelcase
+    if(userp == "Usa")
+      userp = 'USA';
     end
-    if(user == "Uk")
-      user = 'UK';
+    if(userp == "Uk")
+      userp = 'UK';
     end
+    user = User.find_by(name: userp)
     if user && user.authenticate(params[:session][:password])
       log_in user
       redirect_to root_path
