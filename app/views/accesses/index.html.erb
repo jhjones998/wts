@@ -3,26 +3,50 @@
 <h1>Accesses</h1>
 
 <table>
+  <% User.all.each do |user| %>
+      <% if !user.admin %>
+          <tr>
+            <td><%= user.name %></td>
+            <% Country.all.each do |c|
+              if user.id != c.user.id %>
+                    <td>
+                      <% if user.has_access_to_tech?(c) %>
+                          <% access = Access.find_by(:user => user, :country => c) %>
+                           <%= link_to c.name, access, method: :delete %>
+                      <% else %>
+                          <%= button_to c.name, {controller: 'accesses', action: 'create', access: {artifacts: false, country_id: c.id, user_id: user.id}}, {class: 'btn btn-danger'} %>
+                      <% end %>
+                    </td>
+                <% end %>
+            <% end %>
+          </tr>
+      <% end %>
+  <% end %>
+</table>
+
+
+<table>
   <thead>
-    <tr>
-      <th>User</th>
-      <th>Country</th>
-      <th>Artifacts</th>
-      <th colspan="3"></th>
-    </tr>
+  <tr>
+    <th>User</th>
+    <th>Country</th>
+    <th>Artifacts</th>
+    <th colspan="3"></th>
+  </tr>
   </thead>
 
   <tbody>
-    <% @accesses.each do |access| %>
+
+  <% @accesses.each do |access| %>
       <tr>
         <td><%= access.user %></td>
         <td><%= access.country %></td>
         <td><%= access.artifacts %></td>
         <td><%= link_to 'Show', access %></td>
         <td><%= link_to 'Edit', edit_access_path(access) %></td>
-        <td><%= link_to 'Destroy', access, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', access, method: :delete, data: {confirm: 'Are you sure?'} %></td>
       </tr>
-    <% end %>
+  <% end %>
   </tbody>
 </table>
 

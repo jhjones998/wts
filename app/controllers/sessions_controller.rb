@@ -15,6 +15,10 @@ class SessionsController < ApplicationController
     if(userp == "Uk")
       userp = 'UK';
     end
+    if(userp == "WtsAdmin")
+      userp = 'wts_admin';
+    end
+
     user = User.find_by(name: userp)
     if user && user.authenticate(params[:session][:password])
       log_in user
