@@ -1,12 +1,12 @@
 class Artifact < ApplicationRecord
   belongs_to :country, inverse_of: :artifact
 
-  def split(level, user)
-    if user.can_split?(artifact) && (2 <= level) && (level <= 6)
+  def downgrade(level)
+    if country.can_downgrade?(level) && (1 < level) && (level <= 6)
       self.transaction do
         if self["l#{level}"] > 0
           self.decrement!("l#{level}")
-          self.increment!("l#{level - 1}", by = 2)
+          self.increment!("l#{level - 1}")
         end
       end
     end

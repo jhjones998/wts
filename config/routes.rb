@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :users
 
   get '/countries/:id/tech', to: 'countries#tech'
-  post '/artifacts/:id/combine', to: 'artifacts#combine'
+  post '/artifacts/:id/combinedowngrade', to: 'artifacts#combinedowngrade'
   post '/tech_instances/:id/start_research', to: 'tech_instances#start_research'
   post '/tech_instances/:id/cancel_research', to: 'tech_instances#cancel_research'
   post '/tech_instances/:id/complete_research', to: 'tech_instances#complete_research'

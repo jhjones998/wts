@@ -1,6 +1,6 @@
 class ArtifactsController < ApplicationController
-  before_action :set_artifact, only: [:show, :edit, :update, :destroy, :combine, :split]
-  skip_before_action :require_admin, only: [:combine, :split]
+  before_action :set_artifact, only: [:show, :edit, :update, :destroy, :combinedowngrade]
+  skip_before_action :require_admin, only: [:combinedowngrade]
 
   # GET /artifacts
   # GET /artifacts.json
@@ -62,24 +62,24 @@ class ArtifactsController < ApplicationController
     end
   end
 
-  def split
-    @artifact.combine(params[:commit].to_i)
-    redirect_to root_url
-  end
-
-  def combine
-    @artifact.combine(params[:commit].to_i)
+  def combinedowngrade
+    i = params[:commit].to_i
+    if (i>0)
+      @artifact.combine(i)
+    else
+      @artifact.downgrade(-1*i)
+    end
     redirect_to root_url
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_artifact
-      @artifact = Artifact.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_artifact
+    @artifact = Artifact.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def artifact_params
-      params.require(:artifact).permit(:country_id, :l1, :l2, :l3, :l4, :l5, :l6)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def artifact_params
+    params.require(:artifact).permit(:country_id, :l1, :l2, :l3, :l4, :l5, :l6)
+  end
 end

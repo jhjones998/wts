@@ -22,7 +22,7 @@
         </div>
         <div class="collapse navbar-toggleable-md" id="navbarBottom">
           <h5 class="navbar-brand">Artifacts</h5>
-          <%= form_tag("/artifacts/#{@country.artifact.id}/combine", method: "post", class: "form-inline") do -%>
+          <%= form_tag("/artifacts/#{@country.artifact.id}/combinedowngrade", method: "post", class: "form-inline") do -%>
               <div class="btn-group btn-group-md">
                 <button type="button" class="btn btn-outline-info text-white" disabled="true">1:</button>
                 <button type="button" class="btn btn-secondary bg-faded" disabled="true"><%= @country.artifact["l1"] %></button>
@@ -31,26 +31,31 @@
               <div class="btn-group btn-group-md">
                 <button type="button" class="btn btn-outline-info text-white" disabled="true">2:</button>
                 <button type="button" class="btn btn-secondary bg-faded" disabled="true"><%= @country.artifact["l2"] %></button>
+                <%= content_tag :button, '<', {type: 'submit', name: 'commit', data: {confirm: 'Downgrade a level 2 artifact into a level 1?'}, class: 'btn btn-danger', value: '-2'} if @country.artifact['l2'] > 0 %>
                 <%= content_tag :button, '>', {type: 'submit', name: 'commit', data: {confirm: 'Combine two level 2 artifacts into a level 3?'}, class: 'btn btn-warning', value: '2'} if @country.can_combine?(2) %>
               </div>
               <div class="btn-group btn-group-md">
                 <button type="button" class="btn btn-outline-info text-white" disabled="true">3:</button>
                 <button type="button" class="btn btn-secondary bg-faded" disabled="true"><%= @country.artifact["l3"] %></button>
+                <%= content_tag :button, '<', {type: 'submit', name: 'commit', data: {confirm: 'Downgrade a level 3 artifact into a level 2?'}, class: 'btn btn-danger', value: '-3'} if @country.artifact['l3'] > 0 %>
                 <%= content_tag :button, '>', {type: 'submit', name: 'commit', data: {confirm: 'Combine two level 3 artifacts into a level 4?'}, class: 'btn btn-warning', value: '3'} if @country.can_combine?(3) %>
               </div>
               <div class="btn-group btn-group-md">
                 <button type="button" class="btn btn-outline-info text-white" disabled="true">4:</button>
                 <button type="button" class="btn btn-secondary bg-faded" disabled="true"><%= @country.artifact["l4"] %></button>
+                <%= content_tag :button, '<', {type: 'submit', name: 'commit', data: {confirm: 'Downgrade a level 4 artifact into a level 3?'}, class: 'btn btn-danger', value: '-4'} if @country.artifact['l4'] > 0 %>
                 <%= content_tag :button, '>', {type: 'submit', name: 'commit', data: {confirm: 'Combine two level 4 artifacts into a level 5?'}, class: 'btn btn-warning', value: '4'} if @country.can_combine?(4) %>
               </div>
               <div class="btn-group btn-group-md">
                 <button type="button" class="btn btn-outline-info text-white" disabled="true">5:</button>
                 <button type="button" class="btn btn-secondary bg-faded" disabled="true"><%= @country.artifact["l5"] %></button>
+                <%= content_tag :button, '<', {type: 'submit', name: 'commit', data: {confirm: 'Downgrade a level 5 artifact into a level 4?'}, class: 'btn btn-danger', value: '-5'} if @country.artifact['l5'] > 0 %>
                 <%= content_tag :button, '>', {type: 'submit', name: 'commit', data: {confirm: 'Combine two level 5 artifacts into a level 6?'}, class: 'btn btn-warning', value: '5'} if @country.can_combine?(5) %>
               </div>
               <div class="btn-group btn-group-md">
                 <button type="button" class="btn btn-outline-info text-white" disabled="true">6:</button>
                 <button type="button" class="btn btn-secondary bg-faded" disabled="true"><%= @country.artifact["l6"] %></button>
+                <%= content_tag :button, '<', {type: 'submit', name: 'commit', data: {confirm: 'Downgrade a level 6 artifact into a level 5?'}, class: 'btn btn-danger', value: '-6'} if @country.artifact['l6'] > 0 %>
               </div>
 
           <% end -%>

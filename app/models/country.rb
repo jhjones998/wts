@@ -24,4 +24,8 @@ class Country < ApplicationRecord
     @I1_id = MasterTech.find_by_wts_id('I1').id
     return TechInstance.find_by(:country_id => self.id, :master_tech_id => @I1_id).researched
   end
+  def can_downgrade?(level)
+    return false if artifact["l#{level}"]<1
+    return true
+  end
 end
