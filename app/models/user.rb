@@ -37,16 +37,4 @@ class User < ApplicationRecord
     end
     tech_instance.country.user.id == self.id
   end
-  def can_split?(artifact)
-    if self.admin
-      return true
-    end
-    artifact.country.user_id == self.id
-  end
-  def can_combine?(artifact)
-    if self.admin
-      return true
-    end
-    artifact.country.user_id == self.id
-  end
 end

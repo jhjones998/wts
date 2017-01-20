@@ -12,10 +12,16 @@ class Country < ApplicationRecord
   def unresearched_techs
     self.tech_instances.where(researched: false, visible: true).order(:updated_at)
   end
+  def invisible_techs
+    self.tech_instances.where(researched: false, visible: true).order(:updated_at)
+  end
   def flag
     self.name+' Flag.png'
   end
-  def can_combine(level)
-    artifact["l#{level}"]>1
+  def can_combine?(level)
+    return false if artifact["l#{level}"]<2
+    return true if user.admin
+    @I1_id = MasterTech.find_by_wts_id('I1').id
+    return TechInstance.find_by(:country_id => self.id, :master_tech_id => @I1_id).researched
   end
 end
