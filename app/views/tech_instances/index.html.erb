@@ -16,7 +16,7 @@
   </thead>
 
   <tbody>
-    <% @tech_instances.each do |tech_instance| %>
+    <% @tech_instances.order(:country_id).order(:master_tech_id).each do |tech_instance| %>
       <tr>
         <td><%= tech_instance.country.name %></td>
         <td><%= tech_instance.master_tech.wts_id %></td>
