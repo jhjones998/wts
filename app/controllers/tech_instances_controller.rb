@@ -1,5 +1,22 @@
 class TechInstancesController < ApplicationController
-  before_action :set_tech_instance, only: [:show, :edit, :update, :destroy]
+  before_action :set_tech_instance, only: [:show, :edit, :update, :destroy, :start_research, :cancel_research, :complete_research]
+  skip_before_action :require_admin, only: [:start_research, :cancel_research]
+
+
+  def start_research
+    @tech_instance.start_research(@current_user)
+    redirect_to root_url
+  end
+
+  def cancel_research
+    @tech_instance.cancel_research(@current_user)
+    redirect_to root_url
+  end
+
+  def complete_research
+    @tech_instance.complete_research
+  end
+
 
   # GET /tech_instances
   # GET /tech_instances.json

@@ -10,6 +10,7 @@
       <th>Visible</th>
       <th>Researching</th>
       <th>Partial credit</th>
+      <th>Researched</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -17,11 +18,12 @@
   <tbody>
     <% @tech_instances.each do |tech_instance| %>
       <tr>
-        <td><%= tech_instance.country %></td>
-        <td><%= tech_instance.master_tech %></td>
+        <td><%= tech_instance.country.name %></td>
+        <td><%= tech_instance.master_tech.wts_id %></td>
         <td><%= tech_instance.visible %></td>
         <td><%= tech_instance.researching %></td>
         <td><%= tech_instance.partial_credit %></td>
+        <td><%= tech_instance.researched %></td>
         <td><%= link_to 'Show', tech_instance %></td>
         <td><%= link_to 'Edit', edit_tech_instance_path(tech_instance) %></td>
         <td><%= link_to 'Destroy', tech_instance, method: :delete, data: { confirm: 'Are you sure?' } %></td>

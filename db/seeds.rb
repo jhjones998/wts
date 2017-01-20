@@ -94,7 +94,7 @@ F4=MasterTech.create(wts_id:'F4', level:4, name:'High Efficiency Solar Panels', 
 F5=MasterTech.create(wts_id:'F5', level:5, name:'Self-Sustaining Photon Energy', desc:'1/Turn +1 Reserve and +1 PR', unresearched_desc:'Converting Mass Energy into human food source', initially_visible:false)
 F6=MasterTech.create(wts_id:'F6', level:6, name:'Ozone Replicators', desc:'Income Level +1, +2 Reserves/Turn, Lowering of Global Terror (if first)', unresearched_desc:'Discovering method for human food/energy absorption through skin', initially_visible:false)
 
-G1=MasterTech.create(wts_id:'G1', level:1, name:'Visual Temporal Gateway', desc:'See where one tech branch goes', unresearched_desc:'localized temporal viewpoint', initially_visible:true)
+G1=MasterTech.create(wts_id:'G1', level:1, name:'Visual Temporal Gateway', desc:'See where one tech branch goes', unresearched_desc:'Localized temporal viewpoint', initially_visible:true)
 G2=MasterTech.create(wts_id:'G2', level:2, name:'Durable Nanobots', desc:'1/Turn +1 Research Credit', unresearched_desc:'Increasing nanobot efficiency and reliability', initially_visible:false) #POLITICAL CONTROL
 G3=MasterTech.create(wts_id:'G3', level:3, name:'Virtual Reality Gaming Environment', desc:'1/Turn Secret Bid and 3 Free Bid Tokens', unresearched_desc:'Completely immersive virtual environments', initially_visible:false)#POLITICAL CONTROL
 G4=MasterTech.create(wts_id:'G4', level:4, name:'Net Coated w/Xenogeneic Paralytic Venom', desc:'One Shot Alien Capture Card', unresearched_desc:'“The Invisible Trap”', initially_visible:false)
