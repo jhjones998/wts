@@ -24,7 +24,7 @@
         <div class="collapse navbar-toggleable-md" id="navbarBottom">
           <%= form_tag("/artifacts/#{@country.artifact.id}/combinedowngrade", method: "post", class: "form-inline") do -%>
               <div class="btn-group btn-group-md">
-                <button type="button" class="btn btn-outline-info text-white" disabled="true">1:</button>
+                <button type="button" class="btn btn-outline-info text-white" disabled='true'>1:</button>
                 <button type="button" class="btn btn-secondary bg-faded" disabled="true"><%= @country.artifact["l1"] %></button>
                 <%= content_tag :button, '>', {type: 'submit', name: 'commit', data: {confirm: 'Combine two level 1 artifacts into a level 2?'}, class: 'btn btn-warning', value: '1'} if @country.can_combine?(1) %>
               </div>
@@ -74,7 +74,7 @@
           <ul class="list-group">
             <li class="list-group-item bg-faded">
               <span class="tag tag-default tag-pill"><%= t.master_tech.wts_id %></span>
-              <i>&nbsp;<%= t.master_tech.unresearched_desc %></i>
+              <i>&nbsp;<%= @current_user.admin ? t.master_tech.desc : t.master_tech.unresearched_desc %></i>
             </li>
             <li class="list-group-item">
               <% if @current_user.can_cancel_research?(t) %>

@@ -5,16 +5,17 @@ class TechInstancesController < ApplicationController
 
   def start_research
     @tech_instance.start_research(@current_user)
-    redirect_to root_url
+    redirect_back
   end
 
   def cancel_research
     @tech_instance.cancel_research(@current_user)
-    redirect_to root_url
+    redirect_back
   end
 
   def complete_research
     @tech_instance.complete_research
+    redirect_back
   end
 
 
