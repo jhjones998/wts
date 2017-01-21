@@ -81,7 +81,7 @@
                   <%= button_to "Cancel Research", {controller: 'tech_instances', action: 'cancel_research', id: t.id},{class:'btn btn-danger'} %>
               <% elsif @current_user.can_start_research?(t) %>
                   <%= button_to "Start Research", {controller: 'tech_instances', action: 'start_research', id: t.id},{class:'btn btn-warning'} %>
-              <% elseif @country.user_id == @current_user.id %>
+              <% elsif @country.user_id == @current_user.id %>
                   One level <%= t.master_tech.level %> artifact and <%= t.master_tech.level %> credit(s) required (minus
                   discounts) to research
               <% end %>
