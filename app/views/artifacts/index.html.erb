@@ -26,9 +26,9 @@
         <td><%= artifact.l4 %></td>
         <td><%= artifact.l5 %></td>
         <td><%= artifact.l6 %></td>
-        <td><%= link_to 'Show', artifact %></td>
+        <td><%= link_to 'Show', artifact if false %></td>
         <td><%= link_to 'Edit', edit_artifact_path(artifact) %></td>
-        <td><%= link_to 'Destroy', artifact, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', artifact, method: :delete, data: { confirm: 'Are you sure?' } if false %></td>
       </tr>
     <% end %>
   </tbody>
@@ -36,4 +36,4 @@
 
 <br>
 
-<%= link_to 'New Artifact', new_artifact_path %>
+<%= link_to 'New Artifact', new_artifact_path if false %>
