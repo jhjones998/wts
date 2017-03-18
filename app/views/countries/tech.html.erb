@@ -70,31 +70,41 @@
           <h3 class="card-title">Available to Research</h3>
         </div>
         <div class="card-block">
-      <% @country.unresearched_techs.find_each do |t| %>
-          <ul class="list-group">
-            <li class="list-group-item bg-faded">
-              <span class="tag tag-default tag-pill"><%= t.master_tech.wts_id %></span>
-              <i>&nbsp;<%= @current_user.admin ? t.master_tech.desc : t.master_tech.unresearched_desc %></i>
-            </li>
-            <li class="list-group-item">
-              <% if @current_user.can_cancel_research?(t) %>
-                  <%= button_to "Cancel Research", {controller: 'tech_instances', action: 'cancel_research', id: t.id},{class:'btn btn-danger'} %>
-              <% elsif @current_user.can_start_research?(t) %>
-                  <%= button_to "Start Research", {controller: 'tech_instances', action: 'start_research', id: t.id},{class:'btn btn-warning'} %>
-              <% elsif @country.user_id == @current_user.id %>
-                  One level <%= t.master_tech.level %> artifact and <%= t.master_tech.level %> credit(s) required (minus
-                  discounts) to research
-              <% end %>
-              <% if @current_user.admin? %>
-                  <%= button_to "Complete Research", controller: 'tech_instances', action: 'complete_research', id: t.id %>
-              <% end %>
-            </li>
-            <% if t.researching && t.partial_credit > 0 %>
-                <li class="list-group-item">Currently Researching. <%= t.partial_credit %> credits already paid.</li>
-            <% end %>
-          </ul>
-          <p/>
-      <% end %>
+          <% @country.unresearched_techs.find_each do |t| %>
+              <ul class="list-group">
+                <li class="list-group-item bg-faded">
+                  <span class="tag tag-default tag-pill"><%= t.master_tech.wts_id %></span>
+                  <i>&nbsp;<%= @current_user.admin ? t.master_tech.desc : t.master_tech.unresearched_desc %></i>
+                </li>
+                <li class="list-group-item">
+                  <% if @current_user.can_cancel_research?(t) %>
+                      <% if @current_user.admin? %>
+                          <%= button_to "Complete Research", controller: 'tech_instances', action: 'complete_research', id: t.id %>
+                      <% else %>
+                          <%= button_to "Cancel Research", {controller: 'tech_instances', action: 'cancel_research', id: t.id}, {class: 'btn btn-danger'} %>
+                      <% end %>
+                  <% end %>
+                  <% if @current_user.admin? %>
+                      <%= button_to "Give Technology", controller: 'tech_instances', action: 'complete_research', id: t.id %>
+                  <% else %>
+                      <% if @current_user.can_start_research?(t) %>
+                          <%= button_to "Start Research", {controller: 'tech_instances', action: 'start_research', id: t.id}, {class: 'btn btn-warning'} %>
+                      <% elsif @country.user_id == @current_user.id %>
+                          One level <%= t.master_tech.level %> artifact and <%= t.master_tech.level %> credit(s)
+                          required
+                          (minus
+                          discounts) to research
+                      <% end %>
+                  <% end %>
+                </li>
+                <% if t.researching && t.partial_credit > 0 %>
+                    <li class="list-group-item">Currently Researching. <%= t.partial_credit %> credits already
+                      paid.
+                    </li>
+                <% end %>
+              </ul>
+              <p/>
+          <% end %>
         </div>
       </div>
       <div class="card card-inverse card-success">
@@ -102,21 +112,22 @@
           <h3 class="card-title">Discoveries</h3>
         </div>
         <div class="card-block">
-        <% @country.researched_techs.find_each do |t| %>
-            <ul class="list-group">
-              <li class="list-group-item bg-faded">
-                <span class="tag tag-default tag-pill"><%= t.master_tech.wts_id %></span>
-                <%= t.master_tech.name %>
-              </li>
-              <li class="list-group-item"><%= t.master_tech.desc %></li>
-            </ul>
-            <p/>
-        <% end %>
+          <% @country.researched_techs.find_each do |t| %>
+              <ul class="list-group">
+                <li class="list-group-item bg-faded">
+                  <span class="tag tag-default tag-pill"><%= t.master_tech.wts_id %></span>
+                  <%= t.master_tech.name %>
+                </li>
+                <li class="list-group-item"><%= t.master_tech.desc %></li>
+              </ul>
+              <p/>
+          <% end %>
         </div>
       </div>
   <% else %>
       <div class="card-block">
-        <h4 class="card-title"><%= @current_user.name %> does not have access to <%= @country.name %>'s Research</h4>
+        <h4 class="card-title"><%= @current_user.name %> does not have access to <%= @country.name %>'s
+          Research</h4>
       </div>
   <% end %>
 

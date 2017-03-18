@@ -15,17 +15,17 @@ User.delete_all
 
 User.create(name:'wts_admin', password:'wts_password', admin:true)
 
-SFTU = User.create(name:'Science and Financial Times', password:'SFT399', admin:false)
+SFTU = User.create(name:'Science and Financial Times', password:'SFT789', admin:false)
 
 BrazilU = User.create(name:'Brazil', password:'BZ841', admin:false)
-ChinaU = User.create(name:'China', password:'RED235', admin:false)
-FranceU = User.create(name:'France', password:'FR610', admin:false)
-GermanyU = User.create(name:'Germany', password:'SS945', admin:false)
-IndiaU = User.create(name:'India', password:'GH111', admin:false)
-JapanU = User.create(name:'Japan', password:'JP292', admin:false)
-RussiaU = User.create(name:'Russia', password:'KGB247', admin:false)
-UKU = User.create(name:'UK', password:'MI5007', admin:false)
-USAU = User.create(name:'USA', password:'USA235', admin:false)
+ChinaU = User.create(name:'China', password:'RED271', admin:false)
+FranceU = User.create(name:'France', password:'FR678', admin:false)
+GermanyU = User.create(name:'Germany', password:'SS389', admin:false)
+IndiaU = User.create(name:'India', password:'GH240', admin:false)
+JapanU = User.create(name:'Japan', password:'JP234', admin:false)
+RussiaU = User.create(name:'Russia', password:'KGB423', admin:false)
+UKU = User.create(name:'UK', password:'MI5563', admin:false)
+USAU = User.create(name:'USA', password:'USA892', admin:false)
 
 
 Brazil = Country.create(name:'Brazil', user:BrazilU)
@@ -50,15 +50,15 @@ Access.create(user:UKU, country:UK, artifacts:true)
 Access.create(user:USAU, country:USA, artifacts:true)
 
 
-Artifact.create(country:Brazil, l1:0, l2:0, l3:0, l4:0, l5:0, l6:0)
-Artifact.create(country:China, l1:0, l2:0, l3:0, l4:0, l5:0, l6:0)
-Artifact.create(country:France, l1:0, l2:0, l3:0, l4:0, l5:0, l6:0)
-Artifact.create(country:Germany, l1:0, l2:0, l3:0, l4:0, l5:0, l6:0)
-Artifact.create(country:India, l1:0, l2:0, l3:0, l4:0, l5:0, l6:0)
-Artifact.create(country:Japan, l1:0, l2:0, l3:0, l4:0, l5:0, l6:0)
-Artifact.create(country:Russia, l1:0, l2:0, l3:0, l4:0, l5:0, l6:0)
-Artifact.create(country:UK, l1:0, l2:0, l3:0, l4:0, l5:0, l6:0)
-Artifact.create(country:USA, l1:0, l2:0, l3:0, l4:0, l5:0, l6:0)
+Artifact.create(country:Brazil, l1:1, l2:1, l3:0, l4:0, l5:0, l6:0)
+Artifact.create(country:China, l1:1, l2:1, l3:0, l4:0, l5:0, l6:0)
+Artifact.create(country:France, l1:1, l2:1, l3:0, l4:0, l5:0, l6:0)
+Artifact.create(country:Germany, l1:1, l2:1, l3:0, l4:0, l5:0, l6:0)
+Artifact.create(country:India, l1:1, l2:1, l3:0, l4:0, l5:0, l6:0)
+Artifact.create(country:Japan, l1:1, l2:1, l3:1, l4:0, l5:0, l6:0)
+Artifact.create(country:Russia, l1:1, l2:1, l3:0, l4:0, l5:0, l6:0)
+Artifact.create(country:UK, l1:1, l2:1, l3:0, l4:0, l5:0, l6:0)
+Artifact.create(country:USA, l1:1, l2:1, l3:0, l4:0, l5:0, l6:0)
 
 
 A1 = MasterTech.create(wts_id:'A1', level:1, name:'Short Range Corrosive Bullets', desc:'Better Attack Card 1', unresearched_desc:'Serum to better penetrate alien armor', initially_visible:true)
@@ -74,11 +74,13 @@ C2 = MasterTech.create(wts_id:'C2', level:2, name:'Point Defense Laser Machine G
 C3 = MasterTech.create(wts_id:'C3', level:3, name:'Point Defense Faster Tracking', desc:'Better Defensive Card', unresearched_desc:'Instantaneous identification and shielding of fast moving projectiles', initially_visible:false)
 C4 = MasterTech.create(wts_id:'C4', level:4, name:'Point Defense Lasers', desc:'Defense +1 Permanently', unresearched_desc:'Alien impact resistant shielding', initially_visible:false)
 C5 = MasterTech.create(wts_id:'C5', level:5, name:'A Christmas Sweater', desc:'Interceptor/Nukes Can Withstand Cold Vacuum/Reentry', unresearched_desc:'“Something to keep the nukes/interceptors warm at night”', initially_visible:false)
+C6 = MasterTech.create(wts_id:'C6', level:6, name:'Extreme Long Range Imaging/Targeting', desc:'Can Detect and Target Alien Bases on Mars', unresearched_desc:'“Nowhere left to hide”', initially_visible:false)
 
 D2 = MasterTech.create(wts_id:'D2', level:2, name:'Heavy Smoke Screen', desc:'Better Acquisition Card', unresearched_desc:'Close range distraction upgrades', initially_visible:false)
 D3 = MasterTech.create(wts_id:'D3', level:3, name:'Smoke Screen With Stun Serum', desc:'Acquisition +1 Permanently', unresearched_desc:'Enhanced distraction/extraction techniques', initially_visible:false)
 D4 = MasterTech.create(wts_id:'D4', level:4, name:'Ultra High Frequency Alien Sound Cannon', desc:'Better Acquisition Card', unresearched_desc:'Extra-sophisticated distraction/extraction weaponry', initially_visible:false)
 D5 = MasterTech.create(wts_id:'D5', level:5, name:'Paralyzing Optical Blast', desc:'Re-Roll Acquisition Die, Keep Second Roll', unresearched_desc:'“It’s all about the artifacts baby”', initially_visible:false)
+D6 = MasterTech.create(wts_id:'D6', level:6, name:'Electromagnetic Pulse', desc:'Can knock destroy electronics (requires nuclear capability)', unresearched_desc:'“Not in my house!”', initially_visible:false)
 
 E1=MasterTech.create(wts_id:'E1', level:1, name:'Hybrid Fuel', desc:'Zone Hopping Penalty Reduced (-1) for Interceptors', unresearched_desc:'Extrapolating alternative fuel source for interceptors', initially_visible:true)
 E2=MasterTech.create(wts_id:'E2', level:2, name:'New Caffeine™', desc:'1/Turn Can Repair 1 Interceptor on Turn it was Damaged', unresearched_desc:'Increasing productivity of human engineers', initially_visible:false) #POLITICAL CONTROL
@@ -102,7 +104,6 @@ G5=MasterTech.create(wts_id:'G5', level:5, name:'High Speed Component Imaging an
 G6=MasterTech.create(wts_id:'G6', level:6, name:'Quantum Computing', desc:'1/Turn Research Credits Counts Towards 2 Technologies', unresearched_desc:'Non binary computing', initially_visible:false)
 
 H4=MasterTech.create(wts_id:'H4', level:4, name:'Efficient Element Breakdown System', desc:'1/Turn +2 Research Credits', unresearched_desc:'“The best tiny little helpers money can buy”', initially_visible:false) #POLITICAL CONTROL
-H6=MasterTech.create(wts_id:'H6', level:6, name:'Extreme Long Range Imaging/Targeting', desc:'Can Detect Alien Bases on Mars', unresearched_desc:'“Nowhere left to hide”', initially_visible:false)
 
 I1=MasterTech.create(wts_id:'I1', level:1, name:'Reverse Engineering', desc:'Can combine 2 artifacts to 1 of the next level', unresearched_desc:'Excess artifact repurposing', initially_visible:true)#POLITICAL CONTROL
 I2=MasterTech.create(wts_id:'I2', level:2, name:'Temporary Miniaturization', desc:'1/Turn +1 Free Plane Result', unresearched_desc:'Compression of artifact scanning tools', initially_visible:false)
@@ -116,17 +117,20 @@ J2=MasterTech.create(wts_id:'J2', level:2, name:'Op Bug', desc:'Spy on Operative
 J3=MasterTech.create(wts_id:'J3', level:3, name:'Op Bug Scrambler', desc:'Detect Operatives Comm Bugs and Origin, Stop or Leak False Info', unresearched_desc:'“Spy vs Spy”', initially_visible:false) #POLITICAL CONTROL
 J4=MasterTech.create(wts_id:'J4', level:4, name:'Op Bug 9000', desc:'Spy on Operatives (100% Chance)', unresearched_desc:'Perfection of foreign operative tracking hardware', initially_visible:false)
 J5=MasterTech.create(wts_id:'J5', level:5, name:'Alien Tracking Drone', desc:'Spy on Alien Operatives (50% Chance)', unresearched_desc:'“Spy vs Alien spy”', initially_visible:false)  #POLITICAL CONTROL
+J6=MasterTech.create(wts_id:'J6', level:6, name:'Alien Spy Drone', desc:'Spy on Alien Operatives (100% Chance)', unresearched_desc:'“Bond vs Alien spy”', initially_visible:false)  #POLITICAL CONTROL
 
 K2=MasterTech.create(wts_id:'K2', level:2, name:'Handheld Xenomorphic Scanners', desc:'1/Turn 50% Chance for Free Black Market Card', unresearched_desc:'Terrestrial artifact locator', initially_visible:false)
 K3=MasterTech.create(wts_id:'K3', level:3, name:'Information Scrambler', desc:'Target Bugged Nation -2 to Science Credits, Bug is Destroyed', unresearched_desc:'“Changing all the zeros to ones”', initially_visible:false)
 K4=MasterTech.create(wts_id:'K4', level:4, name:'Public Information Scrambler', desc:'Target Bugged Nation -2 to PR, Bug is Destroyed', unresearched_desc:'“The power of doubt and confusion”', initially_visible:false)
 K5=MasterTech.create(wts_id:'K5', level:5, name:'High Yield Scanners', desc:'1/Turn Free Black Market Card; Black Market Artifacts Cost 2', unresearched_desc:'“Bringing darkness to light”', initially_visible:false)#POLITICAL CONTROL
+K6=MasterTech.create(wts_id:'K6', level:6, name:'Deep Space Scanners', desc:'Able to sense chemical composition of deep space structures (see Primary Science GC)', unresearched_desc:'“All-seeing eye”', initially_visible:false)#POLITICAL CONTROL
 
 L1=MasterTech.create(wts_id:'L1', level:1, name:'Trojan Box', desc:'Spy on Another Country’s Tech Tree', unresearched_desc:'Miniaturization of stealth communication devices', initially_visible:true)
 L2=MasterTech.create(wts_id:'L2', level:2, name:'Trojan Box Detection', desc:'Detect Tech Tree Bug and Origin, Stop Bug for 1 Credit', unresearched_desc:'Identifying presence of alien grade espionage equipment', initially_visible:false)
 L3=MasterTech.create(wts_id:'L3', level:3, name:'Data Stream Injection', desc:'Delay Scientist Team: Scientist Rolls 1 Die at a Time During Artifact Hunt', unresearched_desc:'“Clipping the wings” of artifact hunting teams', initially_visible:false)
 L4=MasterTech.create(wts_id:'L4', level:4, name:'Precision Cyber Attack', desc:'Steal 1 Tech from Bugged Nation, Bug Destroyed', unresearched_desc:'“Wolf in sheep’s clothing”', initially_visible:false)
 L5=MasterTech.create(wts_id:'L5', level:5, name:'Artifact Detection Scrambler', desc:'Delay Scientist Team: Cannot do Anything Except Remove Delays', unresearched_desc:'“Who knew science could be this fun”', initially_visible:false)
+L6=MasterTech.create(wts_id:'L6', level:6, name:'Deep Space Cyber Recon', desc:'Can read and manipulate (50% chance) signals from enemy bases (see Primary Science GC)', unresearched_desc:'“Hand of God”', initially_visible:false)
 
 M1=MasterTech.create(wts_id:'M1', level:1, name:'Space Communication Bug', desc:'Spy on Another Country’s Communications with Extraterrestrials', unresearched_desc:'“On the other end of the phone”', initially_visible:true)
 M2=MasterTech.create(wts_id:'M2', level:2, name:'Xeno Bug Detection', desc:'Detect Alien Comms Bug, Stop Bug or Leak False Info', unresearched_desc:'Xenomorphic espionage detection system', initially_visible:false)
@@ -187,8 +191,15 @@ TechTree.create(master_tech:L4, child:L5)
 TechTree.create(master_tech:E5, child:E6)
 TechTree.create(master_tech:F5, child:F6)
 TechTree.create(master_tech:G5, child:G6)
-TechTree.create(master_tech:I5, child:H6)
+TechTree.create(master_tech:C5, child:H6) ### CHANGED
 TechTree.create(master_tech:I5, child:I6)
+
+# NEW
+TechTree.create(master_tech:D5, child:D6)
+TechTree.create(master_tech:J5, child:J6)
+TechTree.create(master_tech:K5, child:K6)
+TechTree.create(master_tech:L5, child:L6)
+
 
 MasterTech.all.each do |t|
   Country.all.each do |c|
