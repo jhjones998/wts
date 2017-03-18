@@ -63,6 +63,9 @@
       </nav>
   <% end %>
 
+  <% if @current_user.admin? && @country.name=="Brazil" %>
+      <h1 class="alert-danger">WARNING: You are editing Brazil</h1>
+  <% end %>
 
   <% if @current_user.has_access_to_tech?(@country) %>
       <div class="card card-inverse card-info">
