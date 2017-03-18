@@ -6,6 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+TechInstance.delete_all
 TechTree.delete_all
 MasterTech.delete_all
 Artifact.delete_all
@@ -191,7 +192,7 @@ TechTree.create(master_tech:L4, child:L5)
 TechTree.create(master_tech:E5, child:E6)
 TechTree.create(master_tech:F5, child:F6)
 TechTree.create(master_tech:G5, child:G6)
-TechTree.create(master_tech:C5, child:H6) ### CHANGED
+TechTree.create(master_tech:C5, child:C6) ### CHANGED
 TechTree.create(master_tech:I5, child:I6)
 
 # NEW
