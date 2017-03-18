@@ -70,12 +70,12 @@ A4 = MasterTech.create(wts_id:'A4', level:4, name:'Interceptor Weapons Function 
 B2 = MasterTech.create(wts_id:'B2', level:2, name:'Shredder Missiles', desc:'One-shot Missile Card 1', unresearched_desc:'Long range extraterrestial craft targetting and serum delivery system', initially_visible:false)
 B3 = MasterTech.create(wts_id:'B3', level:3, name:'Virulent Xenogeneic Virus', desc:'One Shot Bio Weapon Card', unresearched_desc:'Alter corrosive serum to affect extraterrestrial organic tissue with a long range delivery system', initially_visible:false) #Political Control
 B4 = MasterTech.create(wts_id:'B4', level:4, name:'Large Spread Shredder Missiles', desc:'One Shot Missile Card', unresearched_desc:'Larger spread explosive head for maximum penetration', initially_visible:false) #POLITICAL_CONTROL
+B6 = MasterTech.create(wts_id:'B6', level:6, name:'Command MAXX', desc:'1/Turn Before Battle See Opponents Card then Place Card', unresearched_desc:'Upgrading Command Interceptor software', initially_visible:false)
 
 C2 = MasterTech.create(wts_id:'C2', level:2, name:'Point Defense Laser Machine Gun Upgrade', desc:'Better Defensive Card', unresearched_desc:'Improving identification and shielding of fast moving projectiles', initially_visible:false)
 C3 = MasterTech.create(wts_id:'C3', level:3, name:'Point Defense Faster Tracking', desc:'Better Defensive Card', unresearched_desc:'Instantaneous identification and shielding of fast moving projectiles', initially_visible:false)
 C4 = MasterTech.create(wts_id:'C4', level:4, name:'Point Defense Lasers', desc:'Defense +1 Permanently', unresearched_desc:'Alien impact resistant shielding', initially_visible:false)
 C5 = MasterTech.create(wts_id:'C5', level:5, name:'A Christmas Sweater', desc:'Interceptor/Nukes Can Withstand Cold Vacuum/Reentry', unresearched_desc:'“Something to keep the nukes/interceptors warm at night”', initially_visible:false)
-C6 = MasterTech.create(wts_id:'C6', level:6, name:'Extreme Long Range Imaging/Targeting', desc:'Can Detect and Target Alien Bases on Mars', unresearched_desc:'“Nowhere left to hide”', initially_visible:false)
 
 D2 = MasterTech.create(wts_id:'D2', level:2, name:'Heavy Smoke Screen', desc:'Better Acquisition Card', unresearched_desc:'Close range distraction upgrades', initially_visible:false)
 D3 = MasterTech.create(wts_id:'D3', level:3, name:'Smoke Screen With Stun Serum', desc:'Acquisition +1 Permanently', unresearched_desc:'Enhanced distraction/extraction techniques', initially_visible:false)
@@ -97,7 +97,7 @@ F4=MasterTech.create(wts_id:'F4', level:4, name:'High Efficiency Solar Panels', 
 F5=MasterTech.create(wts_id:'F5', level:5, name:'Self-Sustaining Photon Energy', desc:'1/Turn +1 Reserve and +1 PR', unresearched_desc:'Converting Mass Energy into human food source', initially_visible:false)
 F6=MasterTech.create(wts_id:'F6', level:6, name:'Ozone Replicators', desc:'Income Level +1, +2 Reserves/Turn, Lowering of Global Terror (if first)', unresearched_desc:'Discovering method for human food/energy absorption through skin', initially_visible:false)
 
-G1=MasterTech.create(wts_id:'G1', level:1, name:'Visual Temporal Gateway', desc:'See where one tech branch goes', unresearched_desc:'Localized temporal viewpoint', initially_visible:true)
+G1=MasterTech.create(wts_id:'G1', level:1, name:'Visual Temporal Gateway', desc:'Reveal details of a future tech 1/turn (See Primary Science GC)', unresearched_desc:'Localized temporal viewpoint', initially_visible:true)
 G2=MasterTech.create(wts_id:'G2', level:2, name:'Durable Nanobots', desc:'1/Turn +1 Research Credit', unresearched_desc:'Increasing nanobot efficiency and reliability', initially_visible:false) #POLITICAL CONTROL
 G3=MasterTech.create(wts_id:'G3', level:3, name:'Virtual Reality Gaming Environment', desc:'1/Turn Secret Bid and 3 Free Bid Tokens', unresearched_desc:'Completely immersive virtual environments', initially_visible:false)#POLITICAL CONTROL
 G4=MasterTech.create(wts_id:'G4', level:4, name:'Net Coated w/Xenogeneic Paralytic Venom', desc:'One Shot Alien Capture Card', unresearched_desc:'“The Invisible Trap”', initially_visible:false)
@@ -111,7 +111,7 @@ I2=MasterTech.create(wts_id:'I2', level:2, name:'Temporary Miniaturization', des
 I3=MasterTech.create(wts_id:'I3', level:3, name:'Non-Authentic Xenocraft Imaging', desc:'Detect Drones on Map', unresearched_desc:'Decoding artifact materials to better identify saucers from false counterparts', initially_visible:false)
 I4=MasterTech.create(wts_id:'I4', level:4, name:'Alien Command Interceptor', desc:'1/Turn Before Battle Roll d6, 4-6 See Opponents Card then Place Card', unresearched_desc:'Debugging alien military command frequencies', initially_visible:false)
 I5=MasterTech.create(wts_id:'I5', level:5, name:'Long Range Imaging/Targeting', desc:'Can Detect Alien Bases on the Moon', unresearched_desc:'“What’s that, up in the sky?”', initially_visible:false)
-I6=MasterTech.create(wts_id:'I6', level:6, name:'Command MAXX', desc:'1/Turn Before Battle See Opponents Card then Place Card', unresearched_desc:'Upgrading Command Interceptor software', initially_visible:false)
+I6 = MasterTech.create(wts_id:'I6', level:6, name:'Extreme Long Range Imaging/Targeting', desc:'Can Detect and Target Alien Bases on Mars', unresearched_desc:'“Nowhere left to hide”', initially_visible:false)
 
 J1=MasterTech.create(wts_id:'J1', level:1, name:'Alien Utility Belt', desc:'Operative Rolls +1', unresearched_desc:'Gadgetry to assist the work of operatives in the field', initially_visible:true)
 J2=MasterTech.create(wts_id:'J2', level:2, name:'Op Bug', desc:'Spy on Operatives (50% Chance)', unresearched_desc:'Technology to track and monitor foreign operatives', initially_visible:false) #POLITICAL CONTROL
@@ -192,7 +192,7 @@ TechTree.create(master_tech:L4, child:L5)
 TechTree.create(master_tech:E5, child:E6)
 TechTree.create(master_tech:F5, child:F6)
 TechTree.create(master_tech:G5, child:G6)
-TechTree.create(master_tech:C5, child:C6) ### CHANGED
+TechTree.create(master_tech:B4, child:B6) ### CHANGED
 TechTree.create(master_tech:I5, child:I6)
 
 # NEW
