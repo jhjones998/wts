@@ -82,22 +82,18 @@
                 <li class="list-group-item">
                   <% if @current_user.can_cancel_research?(t) %>
                       <% if @current_user.admin? %>
-                          <%= button_to "Complete Research", controller: 'tech_instances', action: 'complete_research', id: t.id %>
+                          <%= button_to "Complete Research", {controller: 'tech_instances', action: 'complete_research', id: t.id}, {class: 'btn btn-success'} %>
                       <% else %>
                           <%= button_to "Cancel Research", {controller: 'tech_instances', action: 'cancel_research', id: t.id}, {class: 'btn btn-danger'} %>
                       <% end %>
+                  <% elsif @current_user.can_start_research?(t) && !@current_user.admin? %>
+                      <%= button_to "Start Research", {controller: 'tech_instances', action: 'start_research', id: t.id}, {class: 'btn btn-warning'} %>
+                  <% elsif @country.user_id == @current_user.id %>
+                      One level <%= t.master_tech.level %> artifact and <%= t.master_tech.level %> credit(s) required
+                      (minus discounts) to research
                   <% end %>
                   <% if @current_user.admin? %>
-                      <%= button_to "Give Technology", controller: 'tech_instances', action: 'complete_research', id: t.id %>
-                  <% else %>
-                      <% if @current_user.can_start_research?(t) %>
-                          <%= button_to "Start Research", {controller: 'tech_instances', action: 'start_research', id: t.id}, {class: 'btn btn-warning'} %>
-                      <% elsif @country.user_id == @current_user.id %>
-                          One level <%= t.master_tech.level %> artifact and <%= t.master_tech.level %> credit(s)
-                          required
-                          (minus
-                          discounts) to research
-                      <% end %>
+                      <%= button_to "Give Technology", {controller: 'tech_instances', action: 'complete_research', id: t.id}, {class: 'btn btn-warning'} %>
                   <% end %>
                 </li>
                 <% if t.researching && t.partial_credit > 0 %>
